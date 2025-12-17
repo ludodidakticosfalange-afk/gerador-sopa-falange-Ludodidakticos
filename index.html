@@ -105,8 +105,23 @@
 
 // PASSO 3: lista mínima com 1 cliente/código (teste)
 const CLIENTES = [
-  { code: "LUDO-FALANGE-TESTE01" }
+  { code: "LUDO-FALANGE-TESTE01", activatedAt: "2024-01-01", days: 3 }
 ];
+
+
+function findCliente(code){
+  return CLIENTES.find(c => normCode(c.code) === code) || null;
+}
+
+function clienteAtivo(cliente){
+  if(!cliente) return false;
+
+  const start = new Date(cliente.activatedAt + "T00:00:00");
+  const ms = Number(cliente.days) * 24 * 60 * 60 * 1000;
+  const end = new Date(start.getTime() + ms);
+
+  return new Date() < end;
+}
 
 function entrar(){
   const raw = document.getElementById("code").value;
@@ -117,12 +132,18 @@ function entrar(){
     return;
   }
 
-  const ok = CLIENTES.some(c => normCode(c.code) === code);
+  const cliente = findCliente(code);
 
-  if(!ok){
-    document.getElementById("msg").textContent = "Código inválido.";
-    return;
-  }
+if(!cliente){
+  document.getElementById("msg").textContent = "Código inválido.";
+  return;
+}
+
+if(!clienteAtivo(cliente)){
+  document.getElementById("msg").textContent = "Assinatura expirada. Fale com o suporte para renovar.";
+  return;
+}
+
 
   // liberou: entra no gerador
   document.getElementById("msg").textContent = "";
