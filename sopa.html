@@ -317,6 +317,12 @@ PAÑUELO</textarea>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
 <script>
+  // BLOQUEIO: exige passar pelo portal
+  if (localStorage.getItem("falange_ok") !== "1") {
+    window.location.href = "index.html";
+  }
+</script>
+
 (() => {
   const $ = (id) => document.getElementById(id);
   const canvas = $("canvas");
