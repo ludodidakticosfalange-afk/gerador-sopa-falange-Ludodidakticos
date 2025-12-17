@@ -94,19 +94,41 @@
   </div>
 
   <script>
-    function entrar(){
-      const code = document.getElementById("code").value.trim();
+    function normCode(s){
+  return String(s || "")
+    .trim()
+    .toUpperCase()
+    .replace(/\s+/g, "")
+    .replace(/–/g, "-")
+    .replace(/—/g, "-");
+}
 
-      if(!code){
-        document.getElementById("msg").textContent =
-          "Digite o código para continuar.";
-        return;
-      }
+// PASSO 3: lista mínima com 1 cliente/código (teste)
+const CLIENTES = [
+  { code: "LUDO-FALANGE-TESTE01" }
+];
 
-      // POR ENQUANTO: qualquer código entra
-      // No próximo passo vamos validar e expirar
-      window.location.href = "sopa.html";
-    }
+function entrar(){
+  const raw = document.getElementById("code").value;
+  const code = normCode(raw);
+
+  if(!code){
+    document.getElementById("msg").textContent = "Digite o código para continuar.";
+    return;
+  }
+
+  const ok = CLIENTES.some(c => normCode(c.code) === code);
+
+  if(!ok){
+    document.getElementById("msg").textContent = "Código inválido.";
+    return;
+  }
+
+  // liberou: entra no gerador
+  document.getElementById("msg").textContent = "";
+  window.location.href = "sopa.html";
+}
+
   </script>
 
 </body>
