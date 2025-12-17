@@ -1,0 +1,878 @@
+<!doctype html>
+<html lan
+g="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sopa de Letras — Falange Presets (A4 300 DPI + PNG)</title>
+  <style>
+    body{font-family:system-ui,Arial,sans-serif;margin:16px;background:#f6f7fb}
+    .wrap{
+  display:grid;
+  gap:16px;
+  grid-template-columns:420px 1fr;
+  align-items:start;
+}
+
+    @media(max-width:980px){.wrap{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+    label{font-size:12px;color:#374151;display:block;margin:10px 0 6px}
+    input,textarea,button,select{width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:10px;padding:10px;font-size:14px}
+    textarea{min-height:160px;resize:vertical}
+    button{cursor:pointer;border:0;background:#2563eb;color:#fff;font-weight:800}
+    button.secondary{background:#111827}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .hint{font-size:12px;color:#6b7280;line-height:1.35}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;border:1px solid #c7d2fe;font-size:12px}
+    .card canvas{
+  max-width:100%;
+  display:block;
+  margin:0 auto;
+}
+
+    .log{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#0b1220;color:#dbeafe;padding:10px;border-radius:12px}
+    .small{font-size:12px;color:#374151}
+.cabecalho{
+  background:#ffffff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:14px;
+}
+
+.cabecalho .linha{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  margin-bottom:10px;
+}
+
+.cabecalho .linha3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+}
+
+.cabecalho input{
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  padding:8px;
+  font-size:14px;
+}
+.tabs{
+  display:flex;
+  gap:8px;
+  margin:10px 0 12px;
+}
+.tab{
+  width:auto;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  background:#f3f4f6;
+  color:#111827;
+  font-weight:800;
+}
+.tab.active{
+  background:#2563eb;
+  border-color:#2563eb;
+  color:#fff;
+}
+.brand-footer{
+  margin-top:16px;
+  padding:14px 10px;
+  border-top:1px solid #e5e7eb;
+  text-align:center;
+}
+
+.brand-logos{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  margin-bottom:6px;
+}
+
+.brand-logos img{
+  height:36px;        /* tamanho seguro */
+  width:auto;
+  opacity:0.9;        /* discreto */
+}
+
+.brand-text{
+  font-size:12px;
+  color:#6b7280;
+  font-weight:600;
+}
+
+
+  </style>
+</head>
+<body>
+  <h2 style="margin:0 0 10px;">Sopa de Letras — Presets Falange (HTML → PNG)</h2>
+
+  <div class="wrap">
+<div class="colLeft">
+
+  
+<!-- CABEÇALHO -->
+ <div class="cabecalho">
+
+  <div class="linha">
+    <strong>Escola:</strong>
+    <input id="escola" type="text" placeholder="Ex.: Escola X" />
+  </div>
+
+  <div class="linha">
+    <strong>Professor:</strong>
+    <input id="professor" type="text" placeholder="Ex.: Professor X" />
+  </div>
+
+  <div class="linha">
+    <strong>Disciplina:</strong>
+    <input id="disciplina" type="text" placeholder="Ex.: Espanhol" />
+  </div>
+
+  <div class="linha linha3">
+    <div>
+      <strong>Aluno:</strong>
+      <input id="aluno" type="text" placeholder="Nome do aluno" />
+    </div>
+
+    <div>
+      <strong>Turma:</strong>
+      <input id="turma" type="text" placeholder="Ex.: 7ºA" />
+    </div>
+
+    <div>
+      <strong>Data:</strong>
+      <input id="data" type="text" placeholder="__/__/____" />
+    </div>
+  </div>
+
+<label style="margin-top:10px;display:flex;gap:8px;align-items:center;">
+  <input type="checkbox" id="usarCabecalho" checked>
+  Incluir cabeçalho no PNG
+</label>
+
+
+</div>
+
+
+  <!-- CARD / CONTEÚDO -->
+  <div class="card">
+
+    <div class="pill">
+      Um HTML • 5 estilos • PNG limpa + gabarito
+    </div>
+
+    <!-- aqui continua TODO o conteúdo original da sopa -->
+
+
+      <label>Preset Falange</label>
+      <select id="preset">
+        <option value="CLASSICO" selected>Falange Clássico (Oficial)</option>
+        <option value="CLEAN">Falange Clean (Minimalista)</option>
+        <option value="INFANTIL">Falange Infantil (Lúdico)</option>
+        <option value="DARK">Falange Dark (Tela/Projetor)</option>
+        <option value="ARCADE">Falange Arcade (NeoGeo)</option>
+      </select>
+
+      <div class="row">
+        <div>
+          <label>Linhas</label>
+          <input id="rows" type="number" min="5" max="60" value="13" />
+        </div>
+        <div>
+          <label>Colunas</label>
+          <input id="cols" type="number" min="5" max="60" value="13" />
+        </div>
+      </div>
+
+      <label>Direções</label>
+      <select id="dirs">
+        <option value="HVD" selected>H + V + D</option>
+        <option value="HV">H + V</option>
+        <option value="H">Só H</option>
+        <option value="V">Só V</option>
+        <option value="D">Só D</option>
+      </select>
+
+      <label>A4 300 DPI</label>
+      <div class="row3">
+        <button id="a4p" class="secondary" type="button">A4 Retrato</button>
+        <button id="a4l" class="secondary" type="button">A4 Paisagem</button>
+        <button id="custom" class="secondary" type="button">Usar custom</button>
+      </div>
+
+      <label>Tamanho do PNG (px)</label>
+      <div class="row">
+        <input id="w" type="number" min="300" max="8000" value="2480" />
+        <input id="h" type="number" min="300" max="8000" value="3508" />
+      </div>
+      <div class="hint">A4 300 DPI: 2480×3508 (retrato) ou 3508×2480 (paisagem).</div>
+
+      <div class="row">
+        <div>
+          <label>Numeração (colunas azuis / linhas vermelhas)</label>
+          <select id="numbers">
+            <option value="ON" selected>Sim</option>
+            <option value="OFF">Não</option>
+          </select>
+        </div>
+        <div>
+          <label>Rodapé (texto)</label>
+          <input id="footer" placeholder="Ex.: BNCC: EFxxLPxx — Tema: Animais" value="BNCC: (ajuste ao tema) — Falange Educación Lúdica & Ludodidakticos"/>
+        </div>
+      </div>
+<label style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+  <input type="checkbox" id="usarBNCC" checked>
+  Incluir BNCC no PNG
+</label>
+<label style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+  <input type="checkbox" id="onlyLetters">
+  Modo “Só letras” (sem linhas e sem bordas)
+</label>
+
+
+
+      <label>Lista de palavras (1 por linha)</label>
+      <textarea id="words">VENTANA
+ESCUELA
+CORAÇÃO
+LÁPIS
+TORTUGA
+CARRETERA
+MUÑECA
+PAÑUELO</textarea>
+
+      <div class="row">
+        <div>
+          <label>Preencher letras aleatórias</label>
+          <select id="alphabet">
+            <option value="ES" selected>A-Z + Ñ</option>
+            <option value="PT">A-Z</option>
+          </select>
+        </div>
+        <div>
+          <label>Tentativas por palavra</label>
+          <input id="tries" type="number" min="50" max="5000" value="900" />
+        </div>
+      </div>
+
+      <div style="height:10px;"></div>
+      <button id="generateBtn">Gerar sopa</button>
+
+      <div style="height:10px;"></div>
+      <div class="row">
+        <button id="pngCleanBtn" class="secondary" disabled>Baixar PNG limpa</button>
+        <button id="pngKeyBtn" class="secondary" disabled>Baixar PNG gabarito</button>
+      </div>
+<div style="height:10px;"></div>
+<div class="row">
+  <button id="pdfCleanBtn" class="secondary" disabled>Baixar PDF limpa</button>
+  <button id="pdfKeyBtn" class="secondary" disabled>Baixar PDF gabarito</button>
+</div>
+
+      <div style="height:10px;"></div>
+      <div class="small">Log:</div>
+      <div id="log" class="log">Aguardando…</div>
+    </div>
+</div>
+
+<div class="colRight">
+<!-- COLUNA B (DIREITA): PRÉVIA -->
+    <div class="card">
+  <div class="pill">Prévia</div>
+
+  <!-- Abas -->
+  <div class="tabs">
+    <button id="tabClean" class="tab active" type="button">Sopa limpa</button>
+    <button id="tabKey" class="tab" type="button">Gabarito</button>
+  </div>
+
+  <!-- Um por vez -->
+  <canvas id="canvas" width="2480" height="3508"></canvas>
+  <canvas id="canvasKey" width="2480" height="3508" style="display:none;"></canvas>
+
+  <div class="hint" style="margin-top:10px;">
+    Clique nas abas para alternar a prévia antes de baixar.
+  </div>
+</div>
+<!-- RODAPÉ INSTITUCIONAL DO GERADOR -->
+<div class="brand-footer">
+  <div class="brand-logos">
+    <img src="falange.png" alt="Falange Educación Lúdica">
+    <img src="ludodidakticos.png.jpg" alt="Ludodidakticos">
+  </div>
+
+  <div class="brand-text">
+    Falange Educación Lúdica &amp; Ludodidakticos
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const canvas = $("canvas");
+  const ctx = canvas.getContext("2d", { alpha: false });
+const canvasKey = $("canvasKey");
+const ctxKey = canvasKey.getContext("2d", { alpha: false });
+
+let activePreview = "clean"; // "clean" ou "key"
+
+  const logEl = $("log");
+
+  // ====== PRESETS ======
+  const THEMES = {
+    CLASSICO: {
+      name: "Falange Clássico",
+      background: { type: "checkered", a: "#ffffff", b: "#f3f4f6", sizeRatio: 0.018 },
+      grid: { color: "#000000", line: 6 },
+      border: { color: "#000000", width: 16, double: false },
+      letters: { color: "#111827", weight: 900, family: "system-ui, Arial" },
+      numbers: { col: "#1d4ed8", row: "#dc2626" },
+      key: { fill: "rgba(239,68,68,0.22)", stroke: "#dc2626", strokeW: 14 },
+      footer: { color: "#111827" }
+    },
+    CLEAN: {
+      name: "Falange Clean",
+      background: { type: "solid", a: "#ffffff" },
+      grid: { color: "#9ca3af", line: 3 },
+      border: { color: "#111827", width: 8, double: false },
+      letters: { color: "#111827", weight: 800, family: "system-ui, Arial" },
+      numbers: { col: "#2563eb", row: "#ef4444" },
+      key: { fill: "rgba(239,68,68,0.12)", stroke: "#ef4444", strokeW: 10 },
+      footer: { color: "#111827" }
+    },
+    INFANTIL: {
+      name: "Falange Infantil",
+      background: { type: "checkered", a: "#ffffff", b: "#f8fafc", sizeRatio: 0.022 },
+      grid: { color: "#111827", line: 7 },
+      border: { color: "#000000", width: 18, double: true }, // borda dupla
+      letters: { color: "#0f172a", weight: 900, family: "system-ui, Arial" },
+      numbers: { col: "#1d4ed8", row: "#dc2626" },
+      key: { fill: "rgba(250,204,21,0.30)", stroke: "#dc2626", strokeW: 14 }, // amarelo + vermelho
+      footer: { color: "#0f172a" }
+    },
+    DARK: {
+      name: "Falange Dark",
+      background: { type: "solid", a: "#0b1220" },
+      grid: { color: "#374151", line: 5 },
+      border: { color: "#ffffff", width: 14, double: false },
+      letters: { color: "#ffffff", weight: 900, family: "system-ui, Arial" },
+      numbers: { col: "#60a5fa", row: "#f87171" },
+      key: { fill: "rgba(248,113,113,0.18)", stroke: "#fb7185", strokeW: 12 },
+      footer: { color: "#e5e7eb" }
+    },
+    ARCADE: {
+      name: "Falange Arcade",
+      background: { type: "solid", a: "#071a3a" },
+      grid: { color: "#60a5fa", line: 4 },
+      border: { color: "#ffffff", width: 16, double: true },
+      letters: { color: "#ffffff", weight: 900, family: "system-ui, Arial" },
+      numbers: { col: "#93c5fd", row: "#fca5a5" },
+      key: { fill: "rgba(34,197,94,0.10)", stroke: "#22c55e", strokeW: 10 }, // “neon”
+      footer: { color: "#e5e7eb" }
+    }
+  };
+
+  function log(msg){ logEl.textContent = String(msg); }
+function setActiveTab(which){
+  activePreview = which;
+
+  const tabClean = document.getElementById("tabClean");
+  const tabKey = document.getElementById("tabKey");
+
+  if (which === "clean"){
+    tabClean.classList.add("active");
+    tabKey.classList.remove("active");
+    canvas.style.display = "block";
+    canvasKey.style.display = "none";
+  } else {
+    tabKey.classList.add("active");
+    tabClean.classList.remove("active");
+    canvas.style.display = "none";
+    canvasKey.style.display = "block";
+  }
+}
+
+document.getElementById("tabClean").addEventListener("click", () => setActiveTab("clean"));
+document.getElementById("tabKey").addEventListener("click", () => setActiveTab("key"));
+
+// inicia sempre na limpa
+setActiveTab("clean");
+
+
+  // ===== Util =====
+  function sanitizeWords(raw){
+    return raw.split(/\r?\n/g).map(s => s.trim()).filter(Boolean).map(s => s.toUpperCase());
+  }
+
+  function randInt(min, maxInclusive){
+    return Math.floor(Math.random() * (maxInclusive - min + 1)) + min;
+  }
+
+  function buildDirections(mode){
+    const dirs = [];
+    if (mode.includes("H")) { dirs.push({dx: 1, dy: 0}); dirs.push({dx: -1, dy: 0}); }
+    if (mode.includes("V")) { dirs.push({dx: 0, dy: 1}); dirs.push({dx: 0, dy: -1}); }
+    if (mode.includes("D")) {
+      dirs.push({dx: 1, dy: 1});
+      dirs.push({dx: -1, dy: -1});
+      dirs.push({dx: 1, dy: -1});
+      dirs.push({dx: -1, dy: 1});
+    }
+    return dirs;
+  }
+
+  function fits(r, c, len, dx, dy, rows, cols){
+    const r2 = r + dy * (len - 1);
+    const c2 = c + dx * (len - 1);
+    return (r2 >= 0 && r2 < rows && c2 >= 0 && c2 < cols);
+  }
+
+  function canPlace(grid, r, c, word, dx, dy){
+    for (let i = 0; i < word.length; i++){
+      const rr = r + dy * i, cc = c + dx * i;
+      const ch = grid[rr][cc];
+      if (ch !== "" && ch !== word[i]) return false;
+    }
+    return true;
+  }
+
+  function placeWord(grid, r, c, word, dx, dy){
+    const path = [];
+    for (let i = 0; i < word.length; i++){
+      const rr = r + dy * i, cc = c + dx * i;
+      grid[rr][cc] = word[i];
+      path.push([rr, cc]);
+    }
+    return path;
+  }
+
+  function makeGrid(rows, cols){
+    return Array.from({length: rows}, () => Array.from({length: cols}, () => ""));
+  }
+
+  function fillRandom(grid, alphabet){
+    const letters = alphabet === "ES"
+      ? "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+      : "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (let r = 0; r < grid.length; r++){
+      for (let c = 0; c < grid[0].length; c++){
+        if (!grid[r][c]) grid[r][c] = letters[randInt(0, letters.length - 1)];
+      }
+    }
+  }
+
+  // ===== Backgrounds =====
+  function drawBackground(theme){
+    if (theme.background.type === "solid"){
+      ctx.fillStyle = theme.background.a;
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      return;
+    }
+    
+    
+
+    // checkered
+    const size = Math.max(18, Math.floor(Math.min(canvas.width, canvas.height) * theme.background.sizeRatio));
+    for (let y = 0; y < canvas.height; y += size){
+      for (let x = 0; x < canvas.width; x += size){
+        const dark = ((x/size + y/size) % 2) === 0;
+        ctx.fillStyle = dark ? theme.background.b : theme.background.a;
+        ctx.fillRect(x, y, size, size);
+      }
+    }
+  }
+
+  // ===== Render Falange =====
+
+  function renderFalange(grid, solutionPaths, withKey, theme, opts){
+  const rows = grid.length, cols = grid[0].length;
+
+  // Reservas
+  const outer = opts.outer;
+const onlyLetters = !!opts.onlyLetters;
+
+  // ===== CABEÇALHO (PNG) — lê os campos da tela =====
+  const escola = (document.getElementById("escola")?.value || "").trim();
+  const professor = (document.getElementById("professor")?.value || "").trim();
+  const disciplina = (document.getElementById("disciplina")?.value || "").trim();
+  const aluno = (document.getElementById("aluno")?.value || "").trim();
+  const turma = (document.getElementById("turma")?.value || "").trim();
+  const dataTxt = (document.getElementById("data")?.value || "").trim();
+
+  // Só cria área de cabeçalho se tiver algo preenchido
+  const usarCabecalho = document.getElementById("usarCabecalho")?.checked;
+const hasHeader = usarCabecalho;
+  const headerH = hasHeader ? Math.max(160, Math.floor(canvas.height * 0.10)) : 0;
+
+  const footerH = opts.footerText ? Math.max(90, Math.floor(Math.min(canvas.width, canvas.height) * 0.03)) : 0;
+  const numbersOn = opts.numbersOn;
+  const numberPad = numbersOn ? Math.max(90, Math.floor(Math.min(canvas.width, canvas.height) * 0.03)) : 0;
+
+  // Área do grid (AGORA com headerH)
+  const startX = outer + numberPad;
+  const startY = outer + numberPad + headerH;
+  const gridW = canvas.width - 2*outer - numberPad;
+  const gridH = canvas.height - 2*outer - numberPad - footerH - headerH;
+
+  if (gridW <= 50 || gridH <= 50) {
+    throw new Error("Canvas pequeno demais para cabeçalho/margem/numeração/rodapé. Aumente o tamanho do PNG ou reduza margens.");
+  }
+
+  const cellW = gridW / cols;
+  const cellH = gridH / rows;
+
+  // fundo primeiro
+  drawBackground(theme);
+
+  // ===== DESENHA CABEÇALHO NO PNG =====
+  if (hasHeader){
+    ctx.save();
+    ctx.fillStyle = theme.footer.color;
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+
+    const t1 = Math.max(26, Math.floor(canvas.height * 0.018)); // fonte principal
+    const t2 = Math.max(22, Math.floor(canvas.height * 0.016)); // fonte menor
+
+    let y = outer;
+    ctx.font = `800 ${t1}px system-ui, Arial`;
+
+    ctx.fillText(`Escola: ${escola || "________________________"}`, outer, y); y += t1 + 10;
+ctx.fillText(`Professor: ${professor || "________________________"}`, outer, y); y += t1 + 10;
+ctx.fillText(`Disciplina: ${disciplina || "________________________"}`, outer, y); y += t1 + 10;
+
+
+    ctx.font = `700 ${t2}px system-ui, Arial`;
+    const linhaAluno =
+  `Aluno: ${aluno || "____________"}   ` +
+  `Turma: ${turma || "____"}   ` +
+  `Data: ${dataTxt || "__/__/____"}`;
+
+ctx.fillText(linhaAluno, outer, y);
+
+
+    ctx.restore();
+  }
+
+  // (DAQUI PRA BAIXO você mantém o resto do seu renderFalange igual)
+
+
+    // grade
+if (!onlyLetters) {
+
+    const lineW = theme.grid.line;
+    ctx.save();
+    ctx.lineWidth = lineW;
+    ctx.strokeStyle = theme.grid.color;
+    for (let r = 0; r <= rows; r++){
+      const y = startY + r*cellH;
+      ctx.beginPath(); ctx.moveTo(startX, y); ctx.lineTo(startX + gridW, y); ctx.stroke();
+    }
+    for (let c = 0; c <= cols; c++){
+      const x = startX + c*cellW;
+      ctx.beginPath(); ctx.moveTo(x, startY); ctx.lineTo(x, startY + gridH); ctx.stroke();
+    }
+    ctx.restore();
+    }
+if (!onlyLetters) {
+    // borda externa (opcional dupla)
+    ctx.save();
+    ctx.strokeStyle = theme.border.color;
+    ctx.lineWidth = theme.border.width;
+    ctx.strokeRect(startX, startY, gridW, gridH);
+    if (theme.border.double){
+      ctx.lineWidth = Math.max(2, Math.floor(theme.border.width * 0.35));
+      ctx.strokeRect(startX + theme.border.width*0.7, startY + theme.border.width*0.7,
+                     gridW - theme.border.width*1.4, gridH - theme.border.width*1.4);
+    }
+    ctx.restore();
+}
+    // gabarito (linhas grossas por palavra)
+    if (withKey){
+      ctx.save();
+      ctx.strokeStyle = theme.key.stroke;
+      ctx.lineWidth = theme.key.strokeW;
+      ctx.lineCap = "round";
+      for (const path of solutionPaths){
+        if (path.length < 2) continue;
+        const [r0,c0] = path[0];
+        const [r1,c1] = path[path.length - 1];
+        const x0 = startX + c0*cellW + cellW/2;
+        const y0 = startY + r0*cellH + cellH/2;
+        const x1 = startX + c1*cellW + cellW/2;
+        const y1 = startY + r1*cellH + cellH/2;
+        ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x1,y1); ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // letras (tenta aproximar ~90pt no 13x13 A4)
+    const baseCell = Math.min(cellW, cellH);
+    const fontSize = Math.max(22, Math.floor(baseCell * 0.62));
+    ctx.save();
+    ctx.fillStyle = theme.letters.color;
+    ctx.font = `${theme.letters.weight} ${fontSize}px ${theme.letters.family}`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (let r = 0; r < rows; r++){
+      for (let c = 0; c < cols; c++){
+        const x = startX + c*cellW + cellW/2;
+        const y = startY + r*cellH + cellH/2;
+        ctx.fillText(grid[r][c], x, y + 1);
+      }
+    }
+    ctx.restore();
+
+    // numeração
+    if (numbersOn){
+      const numFont = Math.max(26, Math.floor(baseCell * 0.38));
+      ctx.save();
+      ctx.font = `900 ${numFont}px system-ui, Arial`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      // colunas (azul) no topo
+      ctx.fillStyle = theme.numbers.col;
+      for (let c = 0; c < cols; c++){
+        const x = startX + c*cellW + cellW/2;
+        const y = startY - numberPad/2;
+        ctx.fillText(String(c+1), x, y);
+      }
+
+      // linhas (vermelho) à esquerda
+      ctx.fillStyle = theme.numbers.row;
+      for (let r = 0; r < rows; r++){
+        const x = startX - numberPad/2;
+        const y = startY + r*cellH + cellH/2;
+        ctx.fillText(String(r+1), x, y);
+      }
+      ctx.restore();
+    }
+
+    // rodapé
+    if (opts.footerText){
+      ctx.save();
+      const fSize = Math.max(22, Math.floor(Math.min(canvas.width, canvas.height) * 0.018));
+      ctx.fillStyle = theme.footer.color;
+      ctx.font = `800 ${fSize}px system-ui, Arial`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(opts.footerText, canvas.width/2, canvas.height - outer/2);
+      ctx.restore();
+    }
+  }
+
+  // ===== Generator =====
+  function generate(){
+    const rows = Math.max(5, Math.min(60, Number($("rows").value || 13)));
+    const cols = Math.max(5, Math.min(60, Number($("cols").value || 13)));
+    const words = sanitizeWords($("words").value);
+    const triesMax = Math.max(50, Math.min(5000, Number($("tries").value || 900)));
+    const dirsMode = $("dirs").value;
+    const alphabetMode = $("alphabet").value;
+    const dirs = buildDirections(dirsMode);
+
+    if (!words.length) { log("Nenhuma palavra informada."); return null; }
+    if (!dirs.length)  { log("Escolha pelo menos uma direção."); return null; }
+
+    const sorted = words.slice().sort((a,b) => b.length - a.length);
+    const tooLong = sorted.filter(w => w.length > Math.max(rows, cols));
+    if (tooLong.length){
+      log("Palavras grandes demais: " + tooLong.join(", "));
+      return null;
+    }
+
+    const grid = makeGrid(rows, cols);
+    const solutionPaths = [];
+    const placed = [];
+    const failed = [];
+
+    for (const word of sorted){
+      let ok = false;
+      for (let t = 0; t < triesMax; t++){
+        const dir = dirs[randInt(0, dirs.length - 1)];
+        const r = randInt(0, rows - 1);
+        const c = randInt(0, cols - 1);
+        if (!fits(r, c, word.length, dir.dx, dir.dy, rows, cols)) continue;
+        if (!canPlace(grid, r, c, word, dir.dx, dir.dy)) continue;
+        solutionPaths.push(placeWord(grid, r, c, word, dir.dx, dir.dy));
+        placed.push(word);
+        ok = true;
+        break;
+      }
+      if (!ok) failed.push(word);
+    }
+
+    fillRandom(grid, alphabetMode);
+
+    if (failed.length){
+      log("Gerou, mas não couberam:\n- " + failed.join("\n- ") + "\n\nDicas: aumente a grade ou reduza palavras.");
+    } else {
+      log(`OK! ${placed.length} palavras posicionadas.`);
+    }
+
+    return { grid, solutionPaths, rows, cols, placed, failed };
+  }
+
+  // ===== Download =====
+  function downloadPNG(filename){
+    const a = document.createElement("a");
+    a.download = filename;
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+  }
+function downloadPDF(filename){
+  // jsPDF (UMD) fica em window.jspdf
+  const { jsPDF } = window.jspdf;
+
+  // cria um PDF com o MESMO tamanho do canvas (em "px")
+  const pdf = new jsPDF({
+    orientation: canvas.width >= canvas.height ? "landscape" : "portrait",
+    unit: "px",
+    format: [canvas.width, canvas.height]
+  });
+
+  const imgData = canvas.toDataURL("image/png");
+  pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+  pdf.save(filename);
+}
+
+  // ===== UI wiring =====
+  function setSize(w,h){
+    $("w").value = w; $("h").value = h;
+    canvas.width = w; canvas.height = h;
+    ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+    log(`Canvas ajustado para ${w}×${h}.`);
+  }
+
+  $("a4p").addEventListener("click", () => setSize(2480, 3508));
+  $("a4l").addEventListener("click", () => setSize(3508, 2480));
+  $("custom").addEventListener("click", () => setSize(
+    Math.max(300, Number($("w").value || 2480)),
+    Math.max(300, Number($("h").value || 3508))
+  ));
+
+  let last = null;
+function drawDataUrlToCanvas(dataUrl, targetCanvas, targetCtx){
+  const img = new Image();
+  img.onload = () => {
+    targetCtx.clearRect(0, 0, targetCanvas.width, targetCanvas.height);
+    targetCtx.drawImage(img, 0, 0, targetCanvas.width, targetCanvas.height);
+  };
+  img.src = dataUrl;
+}
+
+function updatePreviews(){
+  if (!last) return;
+
+  // garantir mesmo tamanho
+  canvasKey.width = canvas.width;
+  canvasKey.height = canvas.height;
+
+  // 1) gera gabarito e joga no canvasKey
+  renderNow(true);
+  const keyURL = canvas.toDataURL("image/png");
+  drawDataUrlToCanvas(keyURL, canvasKey, ctxKey);
+
+  // 2) gera limpa e deixa no canvas principal (padrão)
+  renderNow(false);
+}
+
+  function renderNow(withKey){
+    if (!last) return;
+    const theme = THEMES[$("preset").value] || THEMES.CLASSICO;
+
+    const numbersOn = $("numbers").value === "ON";
+    const usarBNCC = document.getElementById("usarBNCC")?.checked;
+const footerText = usarBNCC ? ($("footer").value || "").trim() : "";
+const onlyLetters = document.getElementById("onlyLetters")?.checked;
+
+
+
+    // “outer” inteligente (margem): para A4 300DPI fica bom assim
+    const outer = Math.max(80, Math.floor(Math.min(canvas.width, canvas.height) * 0.04));
+
+    renderFalange(last.grid, last.solutionPaths, withKey, theme, {
+  numbersOn,
+  footerText,
+  outer,
+  onlyLetters
+});
+
+  }
+
+  $("generateBtn").addEventListener("click", () => {
+    const W = Math.max(300, Math.min(8000, Number($("w").value || 2480)));
+    const H = Math.max(300, Math.min(8000, Number($("h").value || 3508)));
+    canvas.width = W; canvas.height = H;
+
+    last = generate();
+    if (!last){
+      $("pngCleanBtn").disabled = true;
+      $("pngKeyBtn").disabled = true;
+      ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+      return;
+    }
+    try{
+      updatePreviews();
+      $("pngCleanBtn").disabled = false;
+      $("pngKeyBtn").disabled = false;
+$("pdfCleanBtn").disabled = false;
+$("pdfKeyBtn").disabled = false;
+
+    } catch(e){
+      log(e.message || String(e));
+      $("pngCleanBtn").disabled = true;
+      $("pngKeyBtn").disabled = true;
+$("pdfCleanBtn").disabled = true;
+$("pdfKeyBtn").disabled = true;
+
+    }
+  });
+
+  $("preset").addEventListener("change", () => {
+    if (!last) return;
+    try{ updatePreviews(); } catch(e){ log(e.message || String(e)); }
+
+  });
+
+  $("pngCleanBtn").addEventListener("click", () => {
+    if (!last) return;
+    renderNow(false);
+    downloadPNG(`sopa_${last.rows}x${last.cols}_${$("preset").value}_limpa.png`);
+  });
+
+  $("pngKeyBtn").addEventListener("click", () => {
+    if (!last) return;
+    renderNow(true);
+    downloadPNG(`sopa_${last.rows}x${last.cols}_${$("preset").value}_gabarito.png`);
+  });
+$("pdfCleanBtn").addEventListener("click", () => {
+  if (!last) return;
+  renderNow(false);
+  downloadPDF(`sopa_${last.rows}x${last.cols}_${$("preset").value}_limpa.pdf`);
+});
+
+$("pdfKeyBtn").addEventListener("click", () => {
+  if (!last) return;
+  renderNow(true);
+  downloadPDF(`sopa_${last.rows}x${last.cols}_${$("preset").value}_gabarito.pdf`);
+});
+
+  // init
+  ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+  log("Escolha o preset e clique em “Gerar sopa”.");
+})();
+</script>
+</body>
+</html>
