@@ -85,6 +85,11 @@
     <input id="code" placeholder="Digite seu código" />
 
     <button onclick="entrar()">Entrar</button>
+<div id="statusAssinatura" style="
+  margin:10px 0;
+  font-weight:700;
+  text-align:center;
+"></div>
 
     <div id="msg" class="msg"></div>
 
@@ -148,10 +153,44 @@ if(!clienteAtivo(cliente)){
   // liberou: entra no gerador
   document.getElementById("msg").textContent = "";
 localStorage.setItem("falange_ok", "1");
+localStorage.setItem("falange_activatedAt", cliente.activatedAt);
+localStorage.setItem("falange_days", cliente.days);
+
 window.location.href = "sopa.html";
+
+}
+function verificarAssinatura() {
+  const dataStr = localStorage.getItem("falange_activatedAt");
+  const dias = Number(localStorage.getItem("falange_days") || 0);
+  const statusEl = document.getElementById("statusAssinatura");
+
+  if (!statusEl) return;
+
+  if (!dataStr || !dias) {
+    statusEl.textContent = "❌ Nenhuma assinatura ativa";
+    statusEl.style.color = "#dc2626";
+    return;
+  }
+
+  const inicio = new Date(dataStr);
+  const agora = new Date();
+  const diff = Math.floor((agora - inicio) / (1000 * 60 * 60 * 24));
+  const restante = dias - diff;
+
+  if (restante <= 0) {
+    statusEl.textContent = "⛔ Assinatura expirada";
+    statusEl.style.color = "#dc2626";
+    localStorage.removeItem("falange_ok");
+    return;
+  }
+
+  statusEl.textContent = `✅ Assinatura ativa — ${restante} dia(s) restantes`;
+  statusEl.style.color = "#16a34a";
 }
 
-  </script>
+document.addEventListener("DOMContentLoaded", verificarAssinatura);
+
+</script>
 
 </body>
 </html>
