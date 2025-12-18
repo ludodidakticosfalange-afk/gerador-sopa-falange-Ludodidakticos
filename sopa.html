@@ -111,6 +111,10 @@ g="pt-BR">
 </head>
 <body>
   <h2 style="margin:0 0 10px;">Sopa de Letras — Presets Falange (HTML → PNG)</h2>
+<button id="logoutBtn" class="secondary" type="button" style="max-width:220px;margin:0 0 10px;">
+  Sair do Premium
+</button>
+
 
   <div class="wrap">
 <div class="colLeft">
@@ -322,10 +326,17 @@ PAÑUELO</textarea>
     window.location.href = "index.html";
   }
 </script>
+<script>
 
 (() => {
   const $ = (id) => document.getElementById(id);
   const canvas = $("canvas");
+// SAIR: encerra acesso premium
+$("logoutBtn").addEventListener("click", () => {
+  localStorage.removeItem("falange_ok");
+  window.location.replace("index.html");
+});
+
   const ctx = canvas.getContext("2d", { alpha: false });
 const canvasKey = $("canvasKey");
 const ctxKey = canvasKey.getContext("2d", { alpha: false });
@@ -879,6 +890,8 @@ $("pdfKeyBtn").addEventListener("click", () => {
   ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
   log("Escolha o preset e clique em “Gerar sopa”.");
 })();
+</script>
+
 </script>
 </body>
 </html>
