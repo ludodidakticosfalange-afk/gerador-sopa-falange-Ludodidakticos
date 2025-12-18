@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <title>Falange Premium — Painel</title>
+  <title>Profissional Premium — Painel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
@@ -36,23 +36,34 @@
       margin-bottom:20px;
     }
     .btn{
-      display:block;
-      width:100%;
-      padding:14px;
-      margin-bottom:12px;
-      border-radius:14px;
-      border:none;
-      background:#2563eb;
-      color:#fff;
-      font-weight:800;
-      font-size:15px;
-      cursor:pointer;
-      text-align:center;
-      text-decoration:none;
-    }
-    .btn.secondary{
-      background:#374151;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:16px;
+  margin-bottom:12px;
+  border-radius:16px;
+  border:none;
+  background:#2563eb;
+  color:#fff;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  box-shadow:0 10px 25px rgba(37,99,235,.35);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(37,99,235,.45);
+}
+.btn.secondary{
+  background:#374151;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
     .status{
       margin:14px 0;
       text-align:center;
@@ -64,8 +75,14 @@
 <body>
 
   <div class="panel">
-    <h1>Falange Premium</h1>
-    <div class="sub">Painel do assinante</div>
+<div style="text-align:center; margin-bottom:16px;">
+  <img src="falange.png" alt="Falange Educación Lúdica" style="height:46px; margin-right:12px;">
+  <img src="ludodidakticos.png.jpg" alt="Ludodidakticos" style="height:40px;">
+</div>
+
+    <h1>Painel Profissional Premium</h1>
+<div class="sub">Plataforma educacional por assinatura</div>
+
 
     <div id="status" class="status"></div>
 
@@ -80,7 +97,20 @@
     </a>
 
     <button class="btn secondary" onclick="sair()">🚪 Sair</button>
+  
+ <!-- RODAPÉ INSTITUCIONAL -->
+  <div style="
+    margin-top:18px;
+    padding-top:12px;
+    border-top:1px solid #374151;
+    font-size:11px;
+    color:#9ca3af;
+    text-align:center;
+  ">
+    Falange Educación Lúdica &amp; Ludodidakticos<br>
+    Uso educacional profissional
   </div>
+</div>
 
 <script>
   // proteção
