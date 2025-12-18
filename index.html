@@ -90,6 +90,8 @@
     <input id="code" placeholder="Digite seu código" />
 
     <button onclick="entrar()">Entrar</button>
+<button style="margin-top:10px;background:#374151" onclick="limpar()">Limpar assinatura (teste)</button>
+
 <div id="statusAssinatura" style="
   margin:10px 0;
   font-weight:700;
@@ -102,9 +104,16 @@
       Assinatura educacional • Uso profissional
     </div>
   </div>
+function limpar(){
+  localStorage.removeItem("falange_ok");
+  localStorage.removeItem("falange_activatedAt");
+  localStorage.removeItem("falange_days");
+  document.getElementById("msg").textContent = "Assinatura limpa. Recarregue a página e teste o código.";
+  verificarAssinatura();
+}
 
   <script>
-    function normCode(s){
+function normCode(s){
   return String(s || "")
     .trim()
     .toUpperCase()
@@ -113,10 +122,10 @@
     .replace(/—/g, "-");
 }
 
-// PASSO 3: lista mínima com 1 cliente/código (teste)
+// PASSO 3: lista de clientes/códigos
 const CLIENTES = [
   { code: "LUDO-FALANGE-TESTE01", activatedAt: "2025-12-17", days: 3 },
-{ code: "LUDO-FALANGE-ALEX01", activatedAt: "2025-12-17", days: 30 }
+  { code: "LUDO-FALANGE-ALEX01",  activatedAt: "2025-12-17", days: 30 }
 ];
 
 function findCliente(code){
@@ -125,12 +134,19 @@ function findCliente(code){
 
 function clienteAtivo(cliente){
   if(!cliente) return false;
-
   const start = new Date(cliente.activatedAt + "T00:00:00");
   const ms = Number(cliente.days) * 24 * 60 * 60 * 1000;
   const end = new Date(start.getTime() + ms);
-
   return new Date() < end;
+}
+
+function limpar(){
+  localStorage.removeItem("falange_ok");
+  localStorage.removeItem("falange_activatedAt");
+  localStorage.removeItem("falange_days");
+  document.getElementById("msg").textContent =
+    "Assinatura limpa. Recarregue a página e teste o código.";
+  verificarAssinatura();
 }
 
 function entrar(){
@@ -144,31 +160,33 @@ function entrar(){
 
   const cliente = findCliente(code);
 
-if(!cliente){
-  document.getElementById("msg").textContent = "Código inválido.";
-  return;
-}
+  if(!cliente){
+    const lista = CLIENTES.map(c => normCode(c.code)).join(" | ");
+    document.getElementById("msg").textContent =
+      "Código inválido.\n" +
+      "Você digitou (normalizado): " + code + "\n" +
+      "Códigos carregados nesta página: " + lista;
+    return;
+  }
 
-if(!clienteAtivo(cliente)){
-  document.getElementById("msg").textContent = "Assinatura expirada. Fale com o suporte para renovar.";
-  return;
-}
+  if(!clienteAtivo(cliente)){
+    document.getElementById("msg").textContent =
+      "Assinatura expirada. Fale com o suporte para renovar.";
+    return;
+  }
 
-
-  // liberou: entra no gerador
+  // liberou: entra no hub
   document.getElementById("msg").textContent = "";
-localStorage.setItem("falange_ok", "1");
-localStorage.setItem("falange_activatedAt", cliente.activatedAt);
-localStorage.setItem("falange_days", cliente.days);
-
-window.location.href = "hub.html";
-
+  localStorage.setItem("falange_ok", "1");
+  localStorage.setItem("falange_activatedAt", cliente.activatedAt);
+  localStorage.setItem("falange_days", cliente.days);
+  window.location.href = "hub.html";
 }
-function verificarAssinatura() {
+
+function verificarAssinatura(){
   const dataStr = localStorage.getItem("falange_activatedAt");
   const dias = Number(localStorage.getItem("falange_days") || 0);
   const statusEl = document.getElementById("statusAssinatura");
-
   if (!statusEl) return;
 
   if (!dataStr || !dias) {
@@ -194,8 +212,8 @@ function verificarAssinatura() {
 }
 
 document.addEventListener("DOMContentLoaded", verificarAssinatura);
-
 </script>
+
 
 </body>
 </html>
