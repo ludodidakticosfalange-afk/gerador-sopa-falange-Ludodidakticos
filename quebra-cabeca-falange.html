@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quebra-cabeça — Profissional Premium (Reto/Jigsaw + Sangria + Marcas + PNG/PDF)</title>
+  <style>
+    body{
+  margin:0;
+  font-family:system-ui,Arial,sans-serif;
+  background:linear-gradient(180deg,#071a44 0%, #061433 55%, #050f24 100%);
+  color:#eaf2ff;
+  min-height:100vh;
+  padding:18px;
+}
+
+    .wrap{display:grid;gap:16px;grid-template-columns:440px 1fr;align-items:start}
+    @media(max-width:980px){.wrap{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+    label{font-size:12px;color:#374151;display:block;margin:10px 0 6px}
+    input,textarea,button,select{width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:10px;padding:10px;font-size:14px}
+    button{cursor:pointer;border:0;background:#2563eb;color:#fff;font-weight:900}
+    button.secondary{background:#111827}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .hint{font-size:12px;color:#6b7280;line-height:1.35}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;border:1px solid #c7d2fe;font-size:12px}
+    canvas{max-width:100%;display:block;margin:0 auto}
+    .log{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#0b1220;color:#dbeafe;padding:10px;border-radius:12px}
+    .cabecalho{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:14px}
+    .cabecalho .linha{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+    .cabecalho .linha3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .cabecalho input{border:1px solid #d1d5db;border-radius:8px;padding:8px;font-size:14px}
+    .divider{height:1px;background:#e5e7eb;margin:12px 0}
+.topbar{
+  max-width:1200px;
+  margin:0 auto 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.brand{font-weight:900;color:#111827;font-size:12px;letter-spacing:.5px;text-transform:uppercase}
+.title{font-weight:900;color:#0f172a;font-size:18px}
+.topbarActions{display:flex;gap:10px;flex-wrap:wrap}
+.topbar{
+  background:#1e40af;
+  color:#fff;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.topbarLeft{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logoFalange{
+  height:44px;
+}
+
+.topbarText .brand{
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  opacity:.85;
+}
+
+.topbarText .title{
+  font-size:18px;
+  font-weight:900;
+}
+
+.topbarRight{
+  display:flex;
+  gap:10px;
+}
+
+.btnTop{
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:10px 14px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btnTop:hover{
+  filter:brightness(1.08);
+}
+
+.btnTop.danger{
+  background:#dc2626;
+}
+.topbar{
+  max-width:1200px;
+  margin:0 auto 14px;
+  background:#111827;
+  border-radius:16px;
+  padding:14px 16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand img{ height:42px; display:block; }
+.titles{ line-height:1.15; }
+.titles h1{ margin:0; font-size:18px; }
+.titles p{ margin:4px 0 0; font-size:12px; color:#9ca3af; }
+
+.top-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.btnTop{
+  border:0;
+  border-radius:14px;
+  padding:10px 14px;
+  font-weight:800;
+  cursor:pointer;
+  color:#fff;
+  background:#2563eb;
+  box-shadow:0 10px 25px rgba(37,99,235,.35);
+  transition:transform .15s ease, box-shadow .15s ease;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.btnTop:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(37,99,235,.45); }
+.btnTop.secondary{
+  background:#374151;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+/* some o título antigo (h2) */
+h2{ display:none; }
+/* ===== PADRÃO VISUAL FALANGE (igual à FOTO) ===== */
+
+body{
+  margin:0;
+  font-family:system-ui,Arial,sans-serif;
+  min-height:100vh;
+  padding:18px;
+  color:#eaf2ff;
+
+  /* fundo com vinheta + brilho azul no topo (igual padrão) */
+  background:
+    radial-gradient(1200px 520px at 50% 0%, rgba(37,99,235,.22) 0%, rgba(37,99,235,0) 60%),
+    radial-gradient(900px 420px at 15% 20%, rgba(99,102,241,.12) 0%, rgba(99,102,241,0) 62%),
+    linear-gradient(180deg,#0b1220 0%, #07122b 55%, #050a16 100%);
+}
+
+/* centraliza o app e cria “respiro” igual à sopa */
+.wrap{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* card padrão (tom diferente do fundo, NÃO igual) */
+.card{
+  background:rgba(17,24,39,.78);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
+}
+
+/* textos secundários */
+label, .muted, .hint, .small, .sub{
+  color:rgba(234,242,255,.72);
+}
+
+/* inputs (tom próprio, diferente do card) */
+input, textarea, select{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  color:#eaf2ff;
+  border-radius:12px;
+}
+input::placeholder, textarea::placeholder{
+  color:rgba(234,242,255,.45);
+}
+
+/* botões padrão (primário azul, sem “pintar tudo”) */
+button{
+  background:#2563eb;
+  color:#fff;
+  border:0;
+  border-radius:14px;
+  font-weight:800;
+}
+button:hover{ filter:brightness(1.08); }
+
+/* “pill” tipo Prévia */
+.pill{
+  background:rgba(37,99,235,.22);
+  border:1px solid rgba(37,99,235,.35);
+  color:#cfe2ff;
+}
+
+/* PRÉVIA branca (somente ela) */
+canvas{
+  background:#fff;
+  border-radius:14px;
+}
+/* ===== CORREÇÃO: nada de card branco ===== */
+.card{
+  background:rgba(17,24,39,.78) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  color:#eaf2ff !important;
+}
+
+/* textos e placeholders claros */
+.card label{ color:rgba(234,242,255,.72) !important; }
+.card input::placeholder,
+.card textarea::placeholder{ color:rgba(234,242,255,.45) !important; }
+
+/* inputs escuros (não branco) */
+.card input,
+.card textarea,
+.card select{
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  color:#eaf2ff !important;
+}
+
+/* checkbox e textos pequenos */
+.card .check span{ color:rgba(234,242,255,.72) !important; }
+
+/* PRÉVIA continua branca */
+canvas{ background:#fff !important; }
+/* ===== CORREÇÃO FINAL: card da esquerda (informações) ===== */
+.colLeft > div{
+  background:rgba(17,24,39,.78) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  border-radius:16px !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.55) !important;
+  color:#eaf2ff !important;
+}
+
+/* ===== COR IGUAL À SOPA (azul escuro padrão Falange) ===== */
+.card input,
+.card select,
+.card textarea,
+.colLeft input,
+.colLeft select,
+.colLeft textarea{
+  background:#0b1220 !important; /* MESMA cor da sopa */
+  border:1px solid rgba(255,255,255,.14) !important;
+  color:#ffffff !important;
+}
+
+.card input:focus,
+.card select:focus,
+.colLeft input:focus,
+.colLeft select:focus{
+  outline:none;
+  border-color:#2563eb !important;
+  box-shadow:0 0 0 2px rgba(37,99,235,.30);
+}
+
+.card input::placeholder,
+.colLeft input::placeholder{
+  color:rgba(255,255,255,.55) !important;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- TOPBAR PADRÃO FALANGE -->
+<div class="topbar">
+  <div class="brand">
+    <img src="falange.png" alt="Falange" />
+    <img src="ludodidakticos.png.jpg" alt="Parceiro" />
+    <div class="titles">
+      <h1>Quebra-cabeça — Profissional Premium</h1>
+      <p>Gerador A4 300 DPI • PNG/PDF • Reto/Jigsaw</p>
+    </div>
+  </div>
+
+  <div class="top-actions">
+    <button id="goHub" class="btnTop secondary" type="button">← Voltar ao Hub</button>
+    <button id="exitApp" class="btnTop" type="button">🚪 Sair</button>
+  </div>
+</div>
+
+
+
+
+
+  <div class="wrap">
+    <div class="colLeft">
+
+      <!-- CABEÇALHO -->
+      <div class="cabecalho">
+        <div class="linha">
+          <strong>Escola:</strong>
+          <input id="escola" type="text" placeholder="Ex.: Escola X" />
+        </div>
+        <div class="linha">
+          <strong>Professor:</strong>
+          <input id="professor" type="text" placeholder="Ex.: Professor X" />
+        </div>
+        <div class="linha">
+          <strong>Disciplina:</strong>
+          <input id="disciplina" type="text" placeholder="Ex.: Espanhol / Ciências" />
+        </div>
+        <div class="linha linha3">
+          <div>
+            <strong>Turma:</strong>
+            <input id="turma" type="text" placeholder="Ex.: 3ª série" />
+          </div>
+          <div>
+            <strong>Tema:</strong>
+            <input id="tema" type="text" placeholder="Ex.: Animais / Vocabulário" />
+          </div>
+          <div>
+            <strong>Data:</strong>
+            <input id="data" type="text" placeholder="__/__/____" />
+          </div>
+        </div>
+
+        <label style="margin-top:10px;display:flex;gap:8px;align-items:center;">
+          <input type="checkbox" id="usarCabecalho" checked>
+          Incluir cabeçalho
+        </label>
+      </div>
+
+      <!-- CONTROLES -->
+      <div class="card">
+        <div class="pill">Premium: Sangria + Safe + Crop Marks + Reto/Jigsaw</div>
+
+        <label>Preset Falange</label>
+        <select id="preset">
+          <option value="CLASSICO" selected>Clássico</option>
+          <option value="CLEAN">Clean</option>
+          <option value="INFANTIL">Infantil</option>
+          <option value="DARK">Dark</option>
+          <option value="ARCADE">Arcade</option>
+        </select>
+
+        <div class="row">
+          <div>
+            <label>Peças (linhas)</label>
+            <input id="rows" type="number" min="2" max="10" value="4" />
+          </div>
+          <div>
+            <label>Peças (colunas)</label>
+            <input id="cols" type="number" min="2" max="10" value="4" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Tipo de corte</label>
+            <select id="cutType">
+              <option value="STRAIGHT" selected>Corte reto (grade)</option>
+              <option value="JIGSAW">Jigsaw (encaixes)</option>
+            </select>
+          </div>
+          <div>
+            <label>Força do encaixe (Jigsaw)</label>
+            <select id="jigStrength">
+              <option value="0.18">Suave</option>
+              <option value="0.24" selected>Médio</option>
+              <option value="0.30">Forte</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="row">
+          <div>
+            <label>Sangria (mm)</label>
+            <select id="bleedMM">
+              <option value="0">0 mm</option>
+              <option value="2">2 mm</option>
+              <option value="3" selected>3 mm (padrão gráfica)</option>
+              <option value="5">5 mm</option>
+              <option value="10">10 mm</option>
+            </select>
+          </div>
+          <div>
+            <label>Margem de segurança (mm)</label>
+            <select id="safeMM">
+              <option value="0">0 mm</option>
+              <option value="3">3 mm</option>
+              <option value="5" selected>5 mm</option>
+              <option value="8">8 mm</option>
+              <option value="10">10 mm</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Linhas de corte</label>
+            <select id="cutLineStyle">
+              <option value="SOLID" selected>Sólidas</option>
+              <option value="DASHED">Pontilhadas (guia)</option>
+            </select>
+          </div>
+          <div>
+            <label>Marcas de corte (crop marks)</label>
+            <select id="cropMarks">
+              <option value="YES" selected>Sim</option>
+              <option value="NO">Não</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="row">
+          <div>
+            <label>Modo</label>
+            <select id="mode">
+              <option value="IMAGE" selected>Com imagem (arquivo local)</option>
+              <option value="TEXT">Sem imagem (texto no centro)</option>
+            </select>
+          </div>
+          <div>
+            <label>Escolher imagem (modo imagem)</label>
+            <input id="imgFile" type="file" accept="image/*" />
+          </div>
+        </div>
+        <div class="hint" id="imgHint">Nenhuma imagem selecionada.</div>
+
+        <label>Texto central (modo sem imagem)</label>
+        <input id="centerText" value="ÁGUILA — EAGLE" />
+
+        <div class="row">
+          <div>
+            <label>Embaralhar peças?</label>
+            <select id="shuffle">
+              <option value="YES" selected>Sim</option>
+              <option value="NO">Não</option>
+            </select>
+          </div>
+          <div>
+            <label>Mostrar numeração nas peças?</label>
+            <select id="numbers">
+              <option value="YES" selected>Sim</option>
+              <option value="NO">Não</option>
+            </select>
+          </div>
+        </div>
+
+        <label>A4 300 DPI</label>
+        <div class="row3">
+          <button id="a4p" class="secondary" type="button">A4 Retrato</button>
+          <button id="a4l" class="secondary" type="button">A4 Paisagem</button>
+          <button id="custom" class="secondary" type="button">Usar custom</button>
+        </div>
+
+        <label>Tamanho do PNG/PDF (px)</label>
+        <div class="row">
+          <input id="w" type="number" min="300" max="8000" value="2480" />
+          <input id="h" type="number" min="300" max="8000" value="3508" />
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Rodapé (BNCC/Marca)</label>
+            <input id="footer" value="BNCC: (ajuste ao tema) — Educação Lúdica" />
+          </div>
+          <div>
+            <label>Incluir rodapé?</label>
+            <select id="usarBNCC">
+              <option value="YES" selected>Sim</option>
+              <option value="NO">Não</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="height:10px;"></div>
+        <button id="generateBtn">Gerar quebra-cabeça</button>
+
+        <div style="height:10px;"></div>
+        <div class="row">
+          <button id="pngPiecesBtn" class="secondary" disabled>PNG — peças embaralhadas</button>
+          <button id="pngSolvedBtn" class="secondary" disabled>PNG — gabarito montado</button>
+        </div>
+
+        <div style="height:10px;"></div>
+        <div class="row">
+          <button id="pdfPiecesBtn" class="secondary" disabled>PDF — peças</button>
+          <button id="pdfAllBtn" class="secondary" disabled>PDF — tudo</button>
+        </div>
+
+        <div style="height:10px;"></div>
+        <div class="small">Log:</div>
+        <div id="log" class="log">Aguardando…</div>
+      </div>
+    </div>
+
+    <div class="colRight">
+      <div class="card">
+        <div class="pill">Prévia</div>
+        <div class="row" style="grid-template-columns:1fr 1fr;">
+          <select id="previewWhich">
+            <option value="PIECES" selected>Peças</option>
+            <option value="SOLVED">Gabarito</option>
+          </select>
+          <button id="renderPreviewBtn" class="secondary" type="button">Atualizar prévia</button>
+        </div>
+        <canvas id="canvas" width="2480" height="3508"></canvas>
+        <div class="hint" style="margin-top:10px;">No modo Jigsaw: recorte seguindo o contorno. Use as marcas de corte para acabamento premium.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <script>
+  (() => {
+    const $ = (id) => document.getElementById(id);
+    const canvas = $("canvas");
+    const ctx = canvas.getContext("2d", { alpha:false });
+    const logEl = $("log");
+
+    // 300 DPI => px por mm
+    const PX_PER_MM = 300 / 25.4; // ~11.811
+
+    const THEMES = {
+      CLASSICO: { bg:{type:"checkered",a:"#fff",b:"#f3f4f6",sizeRatio:0.018}, border:{color:"#000",width:16,double:false},
+        piece:{stroke:"#000",strokeW:10,fill:"rgba(255,255,255,0)"},
+        text:{color:"#111827",weight:900,family:"system-ui, Arial"}, footer:{color:"#111827"} },
+      CLEAN: { bg:{type:"solid",a:"#fff"}, border:{color:"#111827",width:8,double:false},
+        piece:{stroke:"#111827",strokeW:8,fill:"rgba(255,255,255,0)"},
+        text:{color:"#111827",weight:800,family:"system-ui, Arial"}, footer:{color:"#111827"} },
+      INFANTIL: { bg:{type:"checkered",a:"#fff",b:"#f8fafc",sizeRatio:0.022}, border:{color:"#000",width:18,double:true},
+        piece:{stroke:"#000",strokeW:10,fill:"rgba(250,204,21,0.10)"},
+        text:{color:"#0f172a",weight:900,family:"system-ui, Arial"}, footer:{color:"#0f172a"} },
+      DARK: { bg:{type:"solid",a:"#0b1220"}, border:{color:"#fff",width:14,double:false},
+        piece:{stroke:"#fff",strokeW:8,fill:"rgba(229,231,235,0.06)"},
+        text:{color:"#fff",weight:900,family:"system-ui, Arial"}, footer:{color:"#e5e7eb"} },
+      ARCADE: { bg:{type:"solid",a:"#071a3a"}, border:{color:"#fff",width:16,double:true},
+        piece:{stroke:"#fff",strokeW:8,fill:"rgba(96,165,250,0.08)"},
+        text:{color:"#fff",weight:900,family:"system-ui, Arial"}, footer:{color:"#e5e7eb"} }
+    };
+
+    function log(msg){ logEl.textContent = String(msg); }
+    function clamp(n,a,b){ return Math.max(a, Math.min(b, n)); }
+    function mmToPx(mm){ return Math.round(Number(mm||0) * PX_PER_MM); }
+
+    function drawBackground(theme){
+      if (theme.bg.type === "solid"){
+        ctx.fillStyle = theme.bg.a;
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        return;
+      }
+      const size = Math.max(18, Math.floor(Math.min(canvas.width,canvas.height)*theme.bg.sizeRatio));
+      for (let y=0;y<canvas.height;y+=size){
+        for (let x=0;x<canvas.width;x+=size){
+          const dark = ((x/size + y/size) % 2) === 0;
+          ctx.fillStyle = dark ? theme.bg.b : theme.bg.a;
+          ctx.fillRect(x,y,size,size);
+        }
+      }
+    }
+
+    function setSize(w,h){
+      $("w").value=w; $("h").value=h;
+      canvas.width=w; canvas.height=h;
+      ctx.fillStyle="#fff"; ctx.fillRect(0,0,w,h);
+      log(`Canvas ajustado para ${w}×${h}.`);
+    }
+    $("a4p").addEventListener("click", ()=>setSize(2480,3508));
+    $("a4l").addEventListener("click", ()=>setSize(3508,2480));
+    $("custom").addEventListener("click", ()=>setSize(
+      clamp(Number($("w").value||2480),300,8000),
+      clamp(Number($("h").value||3508),300,8000)
+    ));
+
+    function renderHeader(theme, outer){
+      const hasHeader = $("usarCabecalho").checked;
+      const headerH = hasHeader ? Math.max(160, Math.floor(canvas.height*0.10)) : 0;
+      if (!hasHeader) return headerH;
+
+      const escola = ($("escola").value||"").trim();
+      const professor = ($("professor").value||"").trim();
+      const disciplina = ($("disciplina").value||"").trim();
+      const turma = ($("turma").value||"").trim();
+      const tema = ($("tema").value||"").trim();
+      const dataTxt = ($("data").value||"").trim();
+
+      ctx.save();
+      ctx.fillStyle = theme.footer.color;
+      ctx.textAlign="left"; ctx.textBaseline="top";
+      const t1 = Math.max(26, Math.floor(canvas.height*0.018));
+      const t2 = Math.max(22, Math.floor(canvas.height*0.016));
+      let y = outer;
+
+      ctx.font = `900 ${t1}px system-ui, Arial`;
+      ctx.fillText(`Escola: ${escola || "________________________"}`, outer, y); y += t1 + 10;
+      ctx.fillText(`Professor: ${professor || "________________________"}`, outer, y); y += t1 + 10;
+      ctx.fillText(`Disciplina: ${disciplina || "________________________"}`, outer, y); y += t1 + 10;
+
+      ctx.font = `800 ${t2}px system-ui, Arial`;
+      ctx.fillText(`Turma: ${turma || "____"}   Tema: ${tema || "____"}   Data: ${dataTxt || "__/__/____"}`, outer, y);
+      ctx.restore();
+      return headerH;
+    }
+
+    function renderFooter(theme, outer, footerText){
+      if (!footerText) return;
+      ctx.save();
+      const fSize = Math.max(22, Math.floor(Math.min(canvas.width,canvas.height)*0.018));
+      ctx.fillStyle = theme.footer.color;
+      ctx.font = `800 ${fSize}px system-ui, Arial`;
+      ctx.textAlign="center"; ctx.textBaseline="middle";
+      ctx.fillText(footerText, canvas.width/2, canvas.height - outer/2);
+      ctx.restore();
+    }
+
+    function shuffle(arr){
+      const a = arr.slice();
+      for (let i=a.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [a[i],a[j]]=[a[j],a[i]];
+      }
+      return a;
+    }
+
+    function setDash(style, lineW){
+      if (style === "DASHED"){
+        const dash = Math.max(10, Math.floor(lineW*2.2));
+        const gap  = Math.max(8,  Math.floor(lineW*1.6));
+        ctx.setLineDash([dash, gap]);
+      } else {
+        ctx.setLineDash([]);
+      }
+    }
+
+    function drawCropMarks(x,y,w,h, color, thickness){
+      // marcas de corte “premium”: pequenos traços fora do retângulo
+      const len = Math.max(28, Math.floor(Math.min(w,h)*0.03));
+      const off = Math.max(10, Math.floor(thickness*1.2));
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = thickness;
+      ctx.setLineDash([]);
+
+      // canto sup-esq
+      ctx.beginPath();
+      ctx.moveTo(x-off, y); ctx.lineTo(x-off-len, y);
+      ctx.moveTo(x, y-off); ctx.lineTo(x, y-off-len);
+      ctx.stroke();
+
+      // sup-dir
+      ctx.beginPath();
+      ctx.moveTo(x+w+off, y); ctx.lineTo(x+w+off+len, y);
+      ctx.moveTo(x+w, y-off); ctx.lineTo(x+w, y-off-len);
+      ctx.stroke();
+
+      // inf-esq
+      ctx.beginPath();
+      ctx.moveTo(x-off, y+h); ctx.lineTo(x-off-len, y+h);
+      ctx.moveTo(x, y+h+off); ctx.lineTo(x, y+h+off+len);
+      ctx.stroke();
+
+      // inf-dir
+      ctx.beginPath();
+      ctx.moveTo(x+w+off, y+h); ctx.lineTo(x+w+off+len, y+h);
+      ctx.moveTo(x+w, y+h+off); ctx.lineTo(x+w, y+h+off+len);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+
+    function drawImageCover(img, x, y, w, h){
+      const iw = img.naturalWidth || img.width;
+      const ih = img.naturalHeight || img.height;
+      const ir = iw/ih;
+      const r = w/h;
+      let sx=0, sy=0, sw=iw, sh=ih;
+      if (ir > r){
+        sw = ih*r; sx = (iw - sw)/2;
+      } else {
+        sh = iw/r; sy = (ih - sh)/2;
+      }
+      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+    }
+
+    // ==== JIGSAW ====
+    // edge value: 0 flat, +1 tab outward, -1 inward
+    function buildEdgeMap(rows, cols){
+      const map = Array.from({length:rows}, () => Array.from({length:cols}, () => ({t:0,r:0,b:0,l:0})));
+      for (let r=0;r<rows;r++){
+        for (let c=0;c<cols;c++){
+          if (c < cols-1){
+            const v = Math.random() < 0.5 ? 1 : -1;
+            map[r][c].r = v;
+            map[r][c+1].l = -v;
+          }
+          if (r < rows-1){
+            const v = Math.random() < 0.5 ? 1 : -1;
+            map[r][c].b = v;
+            map[r+1][c].t = -v;
+          }
+        }
+      }
+      return map;
+    }
+
+    // Path of one piece in local coords (0..w,0..h)
+    function piecePathLocal(w, h, e, k){
+      const cx = w/2, cy = h/2;
+      ctx.beginPath();
+      ctx.moveTo(0,0);
+
+      // TOP
+      if (e.t === 0){
+        ctx.lineTo(w,0);
+      } else {
+        const s = e.t;     // +1 outward, -1 inward
+        const dir = -s;    // top outward => up (negative y)
+        ctx.lineTo(cx - k, 0);
+        ctx.bezierCurveTo(cx - k*0.55, 0, cx - k*0.55, dir*k, cx, dir*k);
+        ctx.bezierCurveTo(cx + k*0.55, dir*k, cx + k*0.55, 0, cx + k, 0);
+        ctx.lineTo(w,0);
+      }
+
+      // RIGHT
+      if (e.r === 0){
+        ctx.lineTo(w,h);
+      } else {
+        const s = e.r;   // outward right => +x
+        const dir = s;
+        ctx.lineTo(w, cy - k);
+        ctx.bezierCurveTo(w, cy - k*0.55, w + dir*k, cy - k*0.55, w + dir*k, cy);
+        ctx.bezierCurveTo(w + dir*k, cy + k*0.55, w, cy + k*0.55, w, cy + k);
+        ctx.lineTo(w,h);
+      }
+
+      // BOTTOM
+      if (e.b === 0){
+        ctx.lineTo(0,h);
+      } else {
+        const s = e.b; // outward down => +y
+        const dir = s;
+        ctx.lineTo(cx + k, h);
+        ctx.bezierCurveTo(cx + k*0.55, h, cx + k*0.55, h + dir*k, cx, h + dir*k);
+        ctx.bezierCurveTo(cx - k*0.55, h + dir*k, cx - k*0.55, h, cx - k, h);
+        ctx.lineTo(0,h);
+      }
+
+      // LEFT
+      if (e.l === 0){
+        ctx.closePath();
+      } else {
+        const s = e.l; // outward left => -x
+        const dir = -s;
+        ctx.lineTo(0, cy + k);
+        ctx.bezierCurveTo(0, cy + k*0.55, 0 + dir*k, cy + k*0.55, 0 + dir*k, cy);
+        ctx.bezierCurveTo(0 + dir*k, cy - k*0.55, 0, cy - k*0.55, 0, cy - k);
+        ctx.closePath();
+      }
+    }
+
+    function downloadPNG(filename){
+      const a=document.createElement("a");
+      a.download=filename;
+      a.href=canvas.toDataURL("image/png");
+      a.click();
+    }
+    function downloadPDFPages(pages, filename){
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: canvas.width>=canvas.height ? "landscape":"portrait",
+        unit:"px",
+        format:[canvas.width, canvas.height]
+      });
+      for (let i=0;i<pages.length;i++){
+        if (i>0) pdf.addPage([canvas.width,canvas.height], canvas.width>=canvas.height?"landscape":"portrait");
+        pdf.addImage(pages[i], "PNG", 0, 0, canvas.width, canvas.height);
+      }
+      pdf.save(filename);
+    }
+
+    // ===== Image file handling =====
+    let selectedImage = null;
+    let selectedImageURL = null;
+    $("imgFile").addEventListener("change", (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file){
+        selectedImage = null;
+        if (selectedImageURL){ URL.revokeObjectURL(selectedImageURL); selectedImageURL=null; }
+        $("imgHint").textContent = "Nenhuma imagem selecionada.";
+        return;
+      }
+      if (selectedImageURL){ URL.revokeObjectURL(selectedImageURL); }
+      selectedImageURL = URL.createObjectURL(file);
+
+      const img = new Image();
+      img.src = selectedImageURL;
+      img.onload = () => {
+        selectedImage = img;
+        $("imgHint").textContent = `Imagem selecionada: ${file.name} (${img.naturalWidth}×${img.naturalHeight})`;
+        log("Imagem carregada. Pode gerar!");
+      };
+      img.onerror = () => {
+        selectedImage = null;
+        $("imgHint").textContent = "Falha ao carregar a imagem escolhida.";
+        log("Falha ao carregar a imagem escolhida.");
+      };
+    });
+
+    function renderSolvedPage(theme, cfg){
+      drawBackground(theme);
+
+      const outer = cfg.outer;
+      const headerH = renderHeader(theme, outer);
+      const footerH = cfg.footerText ? Math.max(90, Math.floor(Math.min(canvas.width,canvas.height)*0.03)) : 0;
+
+      const areaX = outer;
+      const areaY = outer + headerH;
+      const areaW = canvas.width - outer*2;
+      const areaH = canvas.height - outer*2 - headerH - footerH;
+
+      // borda externa
+      ctx.save();
+      ctx.strokeStyle = theme.border.color;
+      ctx.lineWidth = theme.border.width;
+      ctx.strokeRect(areaX, areaY, areaW, areaH);
+      if (theme.border.double){
+        ctx.lineWidth = Math.max(2, Math.floor(theme.border.width*0.35));
+        ctx.strokeRect(areaX+theme.border.width*0.7, areaY+theme.border.width*0.7, areaW-theme.border.width*1.4, areaH-theme.border.width*1.4);
+      }
+      ctx.restore();
+
+      // inner “área de corte” (onde ficam as peças)
+      const pad = cfg.safePx + Math.max(30, Math.floor(Math.min(areaW,areaH)*0.03));
+      const innerX = areaX + pad;
+      const innerY = areaY + pad;
+      const innerW = areaW - pad*2;
+      const innerH = areaH - pad*2;
+
+      // sangria: desenha conteúdo maior, mas corta nas peças
+      const bleedX = innerX - cfg.bleedPx;
+      const bleedY = innerY - cfg.bleedPx;
+      const bleedW = innerW + cfg.bleedPx*2;
+      const bleedH = innerH + cfg.bleedPx*2;
+
+      // conteúdo (imagem/texto)
+      if (cfg.mode === "IMAGE" && cfg.image){
+        drawImageCover(cfg.image, bleedX, bleedY, bleedW, bleedH);
+      } else {
+        ctx.save();
+        ctx.fillStyle = theme.piece.fill;
+        ctx.strokeStyle = theme.piece.stroke;
+        ctx.lineWidth = theme.piece.strokeW;
+        ctx.fillRect(bleedX, bleedY, bleedW, bleedH);
+        ctx.strokeRect(bleedX, bleedY, bleedW, bleedH);
+
+        const base = Math.max(46, Math.floor(Math.min(innerW,innerH)*0.10));
+        ctx.fillStyle = theme.text.color;
+        ctx.textAlign="center"; ctx.textBaseline="middle";
+        ctx.font = `${theme.text.weight} ${base}px ${theme.text.family}`;
+        const txt = String(cfg.centerText||"").trim() || "QUEBRA-CABEÇA";
+        ctx.fillText(txt, innerX + innerW/2, innerY + innerH/2);
+        ctx.restore();
+      }
+
+      // Crop marks (na área de corte)
+      if (cfg.cropMarks){
+        drawCropMarks(innerX, innerY, innerW, innerH, theme.piece.stroke, Math.max(3, Math.floor(theme.piece.strokeW*0.35)));
+      }
+
+      // contornos das peças
+      const rows = cfg.rows, cols = cfg.cols;
+      const cellW = innerW/cols;
+      const cellH = innerH/rows;
+
+      const lineW = Math.max(6, Math.floor(theme.piece.strokeW*0.7));
+      ctx.save();
+      ctx.strokeStyle = theme.piece.stroke;
+      ctx.lineWidth = lineW;
+      ctx.lineJoin = "round";
+      setDash(cfg.cutLineStyle, lineW);
+
+      if (cfg.cutType === "STRAIGHT"){
+        for (let r=0;r<=rows;r++){
+          const y = innerY + r*cellH;
+          ctx.beginPath(); ctx.moveTo(innerX, y); ctx.lineTo(innerX+innerW, y); ctx.stroke();
+        }
+        for (let c=0;c<=cols;c++){
+          const x = innerX + c*cellW;
+          ctx.beginPath(); ctx.moveTo(x, innerY); ctx.lineTo(x, innerY+innerH); ctx.stroke();
+        }
+      } else {
+        const k = Math.min(cellW,cellH) * cfg.jigStrength;
+        for (let r=0;r<rows;r++){
+          for (let c=0;c<cols;c++){
+            const x = innerX + c*cellW;
+            const y = innerY + r*cellH;
+            ctx.save();
+            ctx.translate(x,y);
+            piecePathLocal(cellW, cellH, cfg.edges[r][c], k);
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
+      }
+      ctx.restore();
+
+      // numeração
+      if (cfg.numbers){
+        ctx.save();
+        const nSize = Math.max(22, Math.floor(Math.min(cellW,cellH)*0.22));
+        ctx.font = `900 ${nSize}px system-ui, Arial`;
+        ctx.fillStyle = theme.text.color;
+        ctx.textAlign="left"; ctx.textBaseline="top";
+        let k = 1;
+        for (let r=0;r<rows;r++){
+          for (let c=0;c<cols;c++){
+            const x = innerX + c*cellW + Math.max(10, Math.floor(cellW*0.08));
+            const y = innerY + r*cellH + Math.max(10, Math.floor(cellH*0.08));
+            ctx.fillText(String(k++), x, y);
+          }
+        }
+        ctx.restore();
+      }
+
+      renderFooter(theme, outer, cfg.footerText);
+
+      return { innerX, innerY, innerW, innerH, cellW, cellH, rows, cols, headerH, footerH, areaX, areaY, areaW, areaH };
+    }
+
+    async function renderPiecesPage(theme, cfg, meta, solvedDataURL){
+      drawBackground(theme);
+
+      const outer = cfg.outer;
+      const headerH = renderHeader(theme, outer);
+      const footerH = cfg.footerText ? Math.max(90, Math.floor(Math.min(canvas.width,canvas.height)*0.03)) : 0;
+
+      const areaX = outer;
+      const areaY = outer + headerH;
+      const areaW = canvas.width - outer*2;
+      const areaH = canvas.height - outer*2 - headerH - footerH;
+
+      // borda externa
+      ctx.save();
+      ctx.strokeStyle = theme.border.color;
+      ctx.lineWidth = theme.border.width;
+      ctx.strokeRect(areaX, areaY, areaW, areaH);
+      if (theme.border.double){
+        ctx.lineWidth = Math.max(2, Math.floor(theme.border.width*0.35));
+        ctx.strokeRect(areaX+theme.border.width*0.7, areaY+theme.border.width*0.7, areaW-theme.border.width*1.4, areaH-theme.border.width*1.4);
+      }
+      ctx.restore();
+
+      // área de peças (respeita safe)
+      const pad = cfg.safePx + Math.max(30, Math.floor(Math.min(areaW,areaH)*0.03));
+      const innerX = areaX + pad;
+      const innerY = areaY + pad;
+      const innerW = areaW - pad*2;
+      const innerH = areaH - pad*2;
+
+      // Crop marks (na área de peças)
+      if (cfg.cropMarks){
+        drawCropMarks(innerX, innerY, innerW, innerH, theme.piece.stroke, Math.max(3, Math.floor(theme.piece.strokeW*0.35)));
+      }
+
+      const rows = cfg.rows, cols = cfg.cols;
+      const dstCellW = innerW/cols;
+      const dstCellH = innerH/rows;
+
+      // load snapshot
+      const snapshot = new Image();
+      snapshot.src = solvedDataURL;
+      await new Promise((res)=>{ snapshot.onload = res; });
+
+      // order
+      const pieces = [];
+      for (let r=0;r<rows;r++){
+        for (let c=0;c<cols;c++){
+          pieces.push({r,c});
+        }
+      }
+      const order = cfg.shuffleOn ? shuffle(pieces) : pieces;
+
+      const lineW = Math.max(6, Math.floor(theme.piece.strokeW*0.7));
+      ctx.save();
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = theme.piece.stroke;
+      ctx.lineWidth = lineW;
+      setDash(cfg.cutLineStyle, lineW);
+
+      const k = Math.min(dstCellW,dstCellH) * cfg.jigStrength;
+
+      for (let i=0;i<order.length;i++){
+        const src = order[i];
+        const sr = src.r, sc = src.c;
+
+        const sx = meta.innerX + sc*meta.cellW;
+        const sy = meta.innerY + sr*meta.cellH;
+        const sw = meta.cellW;
+        const sh = meta.cellH;
+
+        const dr = Math.floor(i/cols);
+        const dc = i % cols;
+        const dx = innerX + dc*dstCellW;
+        const dy = innerY + dr*dstCellH;
+
+        if (cfg.cutType === "STRAIGHT"){
+          ctx.drawImage(snapshot, sx, sy, sw, sh, dx, dy, dstCellW, dstCellH);
+          // contorno
+          ctx.beginPath();
+          ctx.rect(dx, dy, dstCellW, dstCellH);
+          ctx.stroke();
+        } else {
+          // clip no formato da peça
+          ctx.save();
+          ctx.translate(dx, dy);
+          piecePathLocal(dstCellW, dstCellH, cfg.edges[sr][sc], k);
+          ctx.clip();
+          ctx.drawImage(snapshot, sx, sy, sw, sh, 0, 0, dstCellW, dstCellH);
+          ctx.restore();
+
+          // contorno
+          ctx.save();
+          ctx.translate(dx, dy);
+          piecePathLocal(dstCellW, dstCellH, cfg.edges[sr][sc], k);
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        // numeração (original)
+        if (cfg.numbersOn){
+          ctx.save();
+          ctx.setLineDash([]);
+          const nSize = Math.max(22, Math.floor(Math.min(dstCellW,dstCellH)*0.22));
+          ctx.font = `900 ${nSize}px system-ui, Arial`;
+          ctx.fillStyle = theme.text.color;
+          ctx.textAlign="left"; ctx.textBaseline="top";
+          const num = (sr*cols + sc) + 1;
+          ctx.fillText(String(num), dx + Math.max(10, Math.floor(dstCellW*0.08)), dy + Math.max(10, Math.floor(dstCellH*0.08)));
+          ctx.restore();
+        }
+      }
+
+      ctx.restore();
+
+      renderFooter(theme, outer, cfg.footerText);
+    }
+
+    let state = null;
+
+    async function buildAll(){
+      const W = clamp(Number($("w").value||2480),300,8000);
+      const H = clamp(Number($("h").value||3508),300,8000);
+      canvas.width=W; canvas.height=H;
+
+      const theme = THEMES[$("preset").value] || THEMES.CLASSICO;
+      const rows = clamp(Number($("rows").value||4),2,10);
+      const cols = clamp(Number($("cols").value||4),2,10);
+
+      const mode = $("mode").value;
+      const centerText = ($("centerText").value||"").trim();
+      const shuffleOn = $("shuffle").value === "YES";
+      const numbersOn = $("numbers").value === "YES";
+      const footerText = $("usarBNCC").value === "YES" ? ($("footer").value||"").trim() : "";
+
+      const cutType = $("cutType").value;
+      const jigStrength = clamp(Number($("jigStrength").value||0.24), 0.12, 0.40);
+      const cutLineStyle = $("cutLineStyle").value; // SOLID / DASHED
+      const cropMarks = $("cropMarks").value === "YES";
+
+      const bleedPx = mmToPx($("bleedMM").value);
+      const safePx  = mmToPx($("safeMM").value);
+
+      let image = null;
+      if (mode === "IMAGE"){
+        if (!selectedImage){
+          log("Modo imagem: selecione um arquivo em “Escolher imagem”.");
+          return null;
+        }
+        image = selectedImage;
+      }
+
+      const outer = Math.max(80, Math.floor(Math.min(canvas.width,canvas.height)*0.04));
+
+      // edges (jigsaw)
+      const edges = buildEdgeMap(rows, cols);
+
+      const cfg = {
+        rows, cols, mode, image, centerText,
+        shuffleOn, numbersOn, footerText,
+        cutType, jigStrength, edges,
+        cutLineStyle, cropMarks,
+        bleedPx, safePx,
+        outer
+      };
+
+      // 1) gabarito
+      const meta = renderSolvedPage(theme, cfg);
+      const solvedData = canvas.toDataURL("image/png");
+
+      // 2) peças
+      await renderPiecesPage(theme, cfg, meta, solvedData);
+      const piecesData = canvas.toDataURL("image/png");
+
+      state = { solvedData, piecesData };
+
+      $("pngPiecesBtn").disabled = false;
+      $("pngSolvedBtn").disabled = false;
+      $("pdfPiecesBtn").disabled = false;
+      $("pdfAllBtn").disabled = false;
+
+      log(`OK! Premium gerado: ${rows}×${cols} — ${cutType==="JIGSAW"?"Jigsaw":"Reto"} — sangria ${$("bleedMM").value}mm — safe ${$("safeMM").value}mm.`);
+      return state;
+    }
+
+    function renderFromState(which){
+      if (!state) return;
+      const img = new Image();
+      img.src = which === "SOLVED" ? state.solvedData : state.piecesData;
+      img.onload = () => ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    }
+
+    $("generateBtn").addEventListener("click", async () => {
+      const st = await buildAll();
+      if (st) renderFromState("PIECES");
+    });
+
+    $("renderPreviewBtn").addEventListener("click", () => {
+      renderFromState($("previewWhich").value);
+      log(`Prévia: ${$("previewWhich").value==="SOLVED"?"gabarito":"peças"}`);
+    });
+
+    $("pngPiecesBtn").addEventListener("click", () => {
+      if (!state) return;
+      const img = new Image();
+      img.src = state.piecesData;
+      img.onload = () => { ctx.drawImage(img,0,0,canvas.width,canvas.height); downloadPNG("quebra_cabeca_falange_premium_pecas.png"); };
+    });
+
+    $("pngSolvedBtn").addEventListener("click", () => {
+      if (!state) return;
+      const img = new Image();
+      img.src = state.solvedData;
+      img.onload = () => { ctx.drawImage(img,0,0,canvas.width,canvas.height); downloadPNG("quebra_cabeca_falange_premium_gabarito.png"); };
+    });
+
+    $("pdfPiecesBtn").addEventListener("click", () => {
+      if (!state) return;
+      downloadPDFPages([state.piecesData], "quebra_cabeca_falange_premium_pecas.pdf");
+      log("PDF gerado: peças.");
+    });
+
+    $("pdfAllBtn").addEventListener("click", () => {
+      if (!state) return;
+      downloadPDFPages([state.piecesData, state.solvedData], "quebra_cabeca_falange_premium_tudo.pdf");
+      log("PDF gerado: peças + gabarito.");
+    });
+
+    ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+    log("Premium pronto. Selecione imagem e gere.");
+  })();
+// Voltar ao Hub
+document.getElementById("goHub")?.addEventListener("click", () => {
+  window.location.href = "hub.html";
+});
+// Sair (volta para o login)
+document.getElementById("exitApp")?.addEventListener("click", () => {
+  window.location.href = "index.html";
+});
+
+  </script>
+</body>
+</html>
