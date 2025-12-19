@@ -6,111 +6,193 @@ g="pt-BR">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sopa de Letras — Falange Presets (A4 300 DPI + PNG)</title>
   <style>
-    body{font-family:system-ui,Arial,sans-serif;margin:16px;background:#f6f7fb}
-    .wrap{
-  display:grid;
-  gap:16px;
-  grid-template-columns:420px 1fr;
-  align-items:start;
-}
+  body{
+    margin:0;
+    font-family:system-ui,Arial,sans-serif;
+    background:#0b1220;
+    color:#fff;
+    min-height:100vh;
+    padding:18px;
+  }
 
-    @media(max-width:980px){.wrap{grid-template-columns:1fr}}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
-    label{font-size:12px;color:#374151;display:block;margin:10px 0 6px}
-    input,textarea,button,select{width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:10px;padding:10px;font-size:14px}
-    textarea{min-height:160px;resize:vertical}
-    button{cursor:pointer;border:0;background:#2563eb;color:#fff;font-weight:800}
-    button.secondary{background:#111827}
-    button:disabled{opacity:.5;cursor:not-allowed}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-    .hint{font-size:12px;color:#6b7280;line-height:1.35}
-    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#eef2ff;border:1px solid #c7d2fe;font-size:12px}
-    .card canvas{
-  max-width:100%;
-  display:block;
-  margin:0 auto;
-}
+  .topbar{
+    max-width:1200px;
+    margin:0 auto 14px;
+    background:#111827;
+    border-radius:16px;
+    padding:14px 16px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand img{ height:42px; display:block; }
+  .titles{ line-height:1.15; }
+  .titles h1{ margin:0; font-size:18px; }
+  .titles p{ margin:4px 0 0; font-size:12px; color:#9ca3af; }
 
-    .log{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#0b1220;color:#dbeafe;padding:10px;border-radius:12px}
-    .small{font-size:12px;color:#374151}
-.cabecalho{
-  background:#ffffff;
-  border:1px solid #e5e7eb;
-  border-radius:14px;
-  padding:14px;
-}
+  .top-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .btnTop{
+    border:0;
+    border-radius:14px;
+    padding:10px 14px;
+    font-weight:800;
+    cursor:pointer;
+    color:#fff;
+    background:#2563eb;
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btnTop:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(37,99,235,.45); }
+  .btnTop.secondary{
+    background:#374151;
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+  }
 
-.cabecalho .linha{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-  margin-bottom:10px;
-}
+  h2{ display:none; } /* some o título antigo */
 
-.cabecalho .linha3{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
-}
+  .wrap{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    gap:16px;
+    grid-template-columns:420px 1fr;
+    align-items:start;
+  }
+  @media(max-width:980px){ .wrap{ grid-template-columns:1fr } }
 
-.cabecalho input{
-  border:1px solid #d1d5db;
-  border-radius:8px;
-  padding:8px;
-  font-size:14px;
-}
-.tabs{
-  display:flex;
-  gap:8px;
-  margin:10px 0 12px;
-}
+  .card, .cabecalho{
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:16px;
+    padding:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+
+  label{font-size:12px;color:#e5e7eb;display:block;margin:10px 0 6px}
+  input,textarea,button,select{
+    width:100%;
+    box-sizing:border-box;
+    border:1px solid #374151;
+    border-radius:12px;
+    padding:10px;
+    font-size:14px;
+    background:#0b1220;
+    color:#fff;
+  }
+  textarea{min-height:140px;resize:vertical}
+  input::placeholder, textarea::placeholder{ color:#6b7280; }
+  button{cursor:pointer;border:0;background:#2563eb;color:#fff;font-weight:900}
+  button.secondary{background:#374151}
+  button:disabled{opacity:.5;cursor:not-allowed}
+
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .hint{font-size:12px;color:#9ca3af;line-height:1.35}
+  .pill{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(37,99,235,.15);
+    border:1px solid rgba(37,99,235,.35);
+    font-size:12px;
+    color:#dbeafe;
+    font-weight:800;
+  }
+
+  .card canvas{max-width:100%;display:block;margin:0 auto;border-radius:12px;border:1px solid #1f2937}
+  .log{
+    white-space:pre-wrap;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;
+    background:#0b1220;
+    color:#dbeafe;
+    padding:10px;
+    border-radius:12px;
+    border:1px solid #1f2937;
+  }
+  .small{font-size:12px;color:#e5e7eb}
+
+  .cabecalho .linha{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+  .cabecalho .linha3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .cabecalho input{border-radius:12px}
+
+  .ops{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:6px;
+  }
+  .chk{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    border:1px solid #374151;
+    border-radius:12px;
+    padding:8px 10px;
+    background:#0b1220;
+    font-size:13px;
+    color:#fff;
+  }
+  .chk input{width:auto;margin:0}
+  .hide{display:none !important;}
+/* Abas da prévia (Sopa limpa / Gabarito) pequenas novamente */
+.tabs{ display:flex; gap:8px; margin:10px 0 12px; }
+
 .tab{
-  width:auto;
+  width:auto !important;          /* tira o 100% herdado */
   padding:10px 12px;
   border-radius:12px;
-  border:1px solid #d1d5db;
-  background:#f3f4f6;
-  color:#111827;
-  font-weight:800;
+  border:1px solid #374151;
+  background:#0b1220;
+  color:#e5e7eb;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:none;
 }
+
 .tab.active{
   background:#2563eb;
   border-color:#2563eb;
   color:#fff;
 }
-.brand-footer{
-  margin-top:16px;
-  padding:14px 10px;
-  border-top:1px solid #e5e7eb;
-  text-align:center;
-}
 
-.brand-logos{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:18px;
-  margin-bottom:6px;
-}
+</style>
 
-.brand-logos img{
-  height:36px;        /* tamanho seguro */
-  width:auto;
-  opacity:0.9;        /* discreto */
-}
-
-.brand-text{
-  font-size:12px;
-  color:#6b7280;
-  font-weight:600;
-}
-
-
-  </style>
 </head>
 <body>
   <h2 style="margin:0 0 10px;">Sopa de Letras — Presets Falange (HTML → PNG)</h2>
+<!-- TOPBAR PADRÃO FALANGE -->
+<div class="topbar">
+  <div class="brand">
+    <img src="falange.png" alt="Falange Educación Lúdica">
+    <img src="ludodidakticos.png.jpg" alt="Ludodidakticos">
+    <div class="titles">
+      <h1>Sopa de Letras — Falange Premium</h1>
+      <p>Gerador A4 300 DPI • PNG/PDF limpa + gabarito</p>
+    </div>
+  </div>
+
+  <div class="top-actions">
+    <a href="hub.html" class="btnTop secondary">← Voltar ao Hub</a>
+    <button id="logoutTop" class="btnTop">🚪 Sair</button>
+  </div>
+</div>
 
   <div class="wrap">
 <div class="colLeft">
@@ -164,9 +246,9 @@ g="pt-BR">
   <div class="card">
 
     <div class="pill">
-<button id="logoutBtn" class="secondary" type="button" style="max-width:220px;margin:10px 0;">
-  🔒 Sair do Premium
-</button>
+<button id="logoutBtn" class="secondary" type="button" style="max-width:380px;margin:05px 0;">
+
+
       Um HTML • 5 estilos • PNG limpa + gabarito
     </div>
 
@@ -303,19 +385,6 @@ PAÑUELO</textarea>
     Clique nas abas para alternar a prévia antes de baixar.
   </div>
 </div>
-<!-- RODAPÉ INSTITUCIONAL DO GERADOR -->
-<div class="brand-footer">
-  <div class="brand-logos">
-    <img src="falange.png" alt="Falange Educación Lúdica">
-    <img src="ludodidakticos.png.jpg" alt="Ludodidakticos">
-  </div>
-
-  <div class="brand-text">
-    Falange Educación Lúdica &amp; Ludodidakticos
-  </div>
-</div>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
@@ -886,8 +955,16 @@ $("pdfKeyBtn").addEventListener("click", () => {
 });
 
   // init
-  ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
-  log("Escolha o preset e clique em “Gerar sopa”.");
+ctx.fillStyle="#fff";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+log("Escolha o preset e clique em “Gerar sopa”.");
+
+// SAIR (botão do topo)
+document.getElementById("logoutTop").addEventListener("click", () => {
+  localStorage.removeItem("falange_ok");
+  window.location.replace("index.html");
+});
+
 })();
 </script>
 
