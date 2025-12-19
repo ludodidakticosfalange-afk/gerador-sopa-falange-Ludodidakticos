@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Caça-Resultados — Falange Presets (A4 300 DPI + PNG)</title>
+  <style>
+  body{
+    margin:0;
+    font-family:system-ui,Arial,sans-serif;
+    background:#0b1220;
+    color:#fff;
+    min-height:100vh;
+    padding:18px;
+  }
+
+  .topbar{
+    max-width:1200px;
+    margin:0 auto 14px;
+    background:#111827;
+    border-radius:16px;
+    padding:14px 16px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand img{ height:42px; display:block; }
+  .titles{ line-height:1.15; }
+  .titles h1{ margin:0; font-size:18px; }
+  .titles p{ margin:4px 0 0; font-size:12px; color:#9ca3af; }
+
+  .top-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .btnTop{
+    border:0;
+    border-radius:14px;
+    padding:10px 14px;
+    font-weight:800;
+    cursor:pointer;
+    color:#fff;
+    background:#2563eb;
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btnTop:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(37,99,235,.45); }
+  .btnTop.secondary{
+    background:#374151;
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+  }
+
+  h2{ display:none; } /* some o título antigo */
+
+  .wrap{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    gap:16px;
+    grid-template-columns:420px 1fr;
+    align-items:start;
+  }
+  @media(max-width:980px){ .wrap{ grid-template-columns:1fr } }
+
+  .card, .cabecalho{
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:16px;
+    padding:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+
+  label{font-size:12px;color:#e5e7eb;display:block;margin:10px 0 6px}
+  input,textarea,button,select{
+    width:100%;
+    box-sizing:border-box;
+    border:1px solid #374151;
+    border-radius:12px;
+    padding:10px;
+    font-size:14px;
+    background:#0b1220;
+    color:#fff;
+  }
+  textarea{min-height:140px;resize:vertical}
+  input::placeholder, textarea::placeholder{ color:#6b7280; }
+  button{cursor:pointer;border:0;background:#2563eb;color:#fff;font-weight:900}
+  button.secondary{background:#374151}
+  button:disabled{opacity:.5;cursor:not-allowed}
+
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .hint{font-size:12px;color:#9ca3af;line-height:1.35}
+  .pill{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(37,99,235,.15);
+    border:1px solid rgba(37,99,235,.35);
+    font-size:12px;
+    color:#dbeafe;
+    font-weight:800;
+  }
+
+  .card canvas{max-width:100%;display:block;margin:0 auto;border-radius:12px;border:1px solid #1f2937}
+  .log{
+    white-space:pre-wrap;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;
+    background:#0b1220;
+    color:#dbeafe;
+    padding:10px;
+    border-radius:12px;
+    border:1px solid #1f2937;
+  }
+  .small{font-size:12px;color:#e5e7eb}
+
+  .cabecalho .linha{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+  .cabecalho .linha3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .cabecalho input{border-radius:12px}
+
+  .ops{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:6px;
+  }
+  .chk{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    border:1px solid #374151;
+    border-radius:12px;
+    padding:8px 10px;
+    background:#0b1220;
+    font-size:13px;
+    color:#fff;
+  }
+  .chk input{width:auto;margin:0}
+  .hide{display:none !important;}
+</style>
+
+</head>
+
+<body>
+  <!-- Proteção do Premium -->
+<script>
+  if (localStorage.getItem("falange_ok") !== "1") {
+    window.location.replace("index.html"); // volta pro portal
+  }
+</script>
+
+<div class="topbar">
+  <div class="brand">
+    <img src="falange.png" alt="Falange">
+    <img src="ludodidakticos.png.jpg" alt="Ludodidakticos">
+    <div class="titles">
+      <h1>Caça-Resultados — Falange Premium</h1>
+      <p>Gerador A4 300 DPI • PNG/PDF limpo + gabarito</p>
+    </div>
+  </div>
+
+  <div class="top-actions">
+    <a class="btnTop secondary" href="hub.html">⬅ Voltar ao Hub</a>
+    <button class="btnTop secondary" type="button" onclick="localStorage.removeItem('falange_ok'); window.location.replace('index.html');">
+      🚪 Sair
+    </button>
+  </div>
+</div>
+
+
+  <div class="wrap">
+    <div class="colLeft">
+
+      <!-- CABEÇALHO -->
+      <div class="cabecalho">
+        <div class="linha">
+          <strong>Escola:</strong>
+          <input id="escola" type="text" placeholder="Ex.: Escola X" />
+        </div>
+
+        <div class="linha">
+          <strong>Professor:</strong>
+          <input id="professor" type="text" placeholder="Ex.: Professor X" />
+        </div>
+
+        <div class="linha">
+          <strong>Disciplina:</strong>
+          <input id="disciplina" type="text" placeholder="Ex.: Matemática" />
+        </div>
+
+        <div class="linha linha3">
+          <div>
+            <strong>Aluno:</strong>
+            <input id="aluno" type="text" placeholder="Nome do aluno" />
+          </div>
+
+          <div>
+            <strong>Turma:</strong>
+            <input id="turma" type="text" placeholder="Ex.: 1ºA" />
+          </div>
+
+          <div>
+            <strong>Data:</strong>
+            <input id="data" type="text" placeholder="__/__/____" />
+          </div>
+        </div>
+
+        <label style="margin-top:10px;display:flex;gap:8px;align-items:center;">
+          <input type="checkbox" id="usarCabecalho" checked>
+          Incluir cabeçalho no PNG
+        </label>
+      </div>
+
+      <!-- CARD / CONTROLES -->
+      <div class="card">
+        <div class="pill">Um HTML • 5 estilos • PNG/PDF limpo + gabarito</div>
+
+        <label>Preset Falange</label>
+        <select id="preset">
+          <option value="CLASSICO" selected>Falange Clássico (Oficial)</option>
+          <option value="CLEAN">Falange Clean (Minimalista)</option>
+          <option value="INFANTIL">Falange Infantil (Lúdico)</option>
+          <option value="DARK">Falange Dark (Tela/Projetor)</option>
+          <option value="ARCADE">Falange Arcade (NeoGeo)</option>
+        </select>
+
+        <div class="row">
+          <div>
+            <label>Linhas</label>
+            <input id="rows" type="number" min="5" max="60" value="13" />
+          </div>
+          <div>
+            <label>Colunas</label>
+            <input id="cols" type="number" min="5" max="60" value="13" />
+          </div>
+        </div>
+
+        <label>Direções</label>
+        <select id="dirs">
+          <option value="HVD" selected>H + V + D</option>
+          <option value="HV">H + V</option>
+          <option value="H">Só H</option>
+          <option value="V">Só V</option>
+          <option value="D">Só D</option>
+        </select>
+
+        <label>A4 300 DPI</label>
+        <div class="row3">
+          <button id="a4p" class="secondary" type="button">A4 Retrato</button>
+          <button id="a4l" class="secondary" type="button">A4 Paisagem</button>
+          <button id="custom" class="secondary" type="button">Usar custom</button>
+        </div>
+
+        <label>Tamanho do PNG (px)</label>
+        <div class="row">
+          <input id="w" type="number" min="300" max="8000" value="2480" />
+          <input id="h" type="number" min="300" max="8000" value="3508" />
+        </div>
+        <div class="hint">A4 300 DPI: 2480×3508 (retrato) ou 3508×2480 (paisagem).</div>
+
+        <div class="row">
+          <div>
+            <label>Numeração (colunas azuis / linhas vermelhas)</label>
+            <select id="numbers">
+              <option value="ON" selected>Sim</option>
+              <option value="OFF">Não</option>
+            </select>
+          </div>
+          <div>
+            <label>Rodapé (texto)</label>
+            <input id="footer" placeholder="Ex.: BNCC: EM13MATxxx — Tema: Operações" value="BNCC: (ajuste ao tema) — Falange Educación Lúdica" />
+          </div>
+        </div>
+
+        <label style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+          <input type="checkbox" id="usarBNCC" checked>
+          Incluir BNCC no PNG
+        </label>
+
+        <label style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+          <input type="checkbox" id="usarResultados" checked>
+          Incluir lista de RESULTADOS no PNG (abaixo da grade)
+        </label>
+
+        <label>Modo</label>
+        <select id="mode">
+          <option value="AUTO" selected>Gerar automaticamente</option>
+          <option value="LIST">Usar lista de resultados (1 por linha)</option>
+        </select>
+
+        <div id="autoBox">
+          <label>Quantidade de resultados</label>
+          <input id="qtd" type="number" min="4" max="40" value="12" />
+
+          <label>Operações permitidas</label>
+          <div class="ops">
+            <label class="chk"><input id="opAdd" type="checkbox" checked> +</label>
+            <label class="chk"><input id="opSub" type="checkbox" checked> −</label>
+            <label class="chk"><input id="opMul" type="checkbox"> ×</label>
+            <label class="chk"><input id="opDiv" type="checkbox"> ÷</label>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Resultado mínimo</label>
+              <input id="resMin" type="number" value="0" />
+            </div>
+            <div>
+              <label>Resultado máximo</label>
+              <input id="resMax" type="number" value="50" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Operando mínimo</label>
+              <input id="aMin" type="number" value="0" />
+            </div>
+            <div>
+              <label>Operando máximo</label>
+              <input id="aMax" type="number" value="20" />
+            </div>
+          </div>
+
+          <label style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+            <input type="checkbox" id="allowNeg" checked>
+            Permitir resultado negativo (se marcar, pode aparecer −)
+          </label>
+
+          <div class="hint">Dica: para 3ª série EM, deixe só +/− e aumente o “Resultado máximo” conforme o nível.</div>
+        </div>
+
+        <div id="listBox" class="hide">
+          <label>Lista de resultados (1 por linha)</label>
+          <textarea id="resultsList">12
+7
+19
+5
+30
+11
+24
+9
+40
+3
+18
+15</textarea>
+          <div class="hint">Você cola os resultados aqui. O gerador cria expressões diferentes que dão exatamente esses resultados.</div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Preencher com</label>
+            <select id="fillMode">
+              <option value="DIGITS" selected>Só dígitos (0–9)</option>
+              <option value="MIX">Dígitos + operadores</option>
+            </select>
+          </div>
+          <div>
+            <label>Tentativas por expressão</label>
+            <input id="tries" type="number" min="50" max="8000" value="1200" />
+          </div>
+        </div>
+
+        <!-- NOVO: escolher quais operadores podem aparecer na grade (quando fillMode = MIX) -->
+        <div id="fillOpsBox" class="hide">
+          <label>Operadores na grade (quando “Dígitos + operadores”)</label>
+          <div class="ops">
+            <label class="chk"><input id="fillAdd" type="checkbox" checked> +</label>
+            <label class="chk"><input id="fillSub" type="checkbox" checked> −</label>
+            <label class="chk"><input id="fillMul" type="checkbox" checked> ×</label>
+            <label class="chk"><input id="fillDiv" type="checkbox" checked> ÷</label>
+            <label class="chk"><input id="fillEq"  type="checkbox" checked> =</label>
+          </div>
+          <div class="hint">Se desmarcar tudo, o preenchimento volta a ser só com dígitos.</div>
+        </div>
+
+        <div style="height:10px;"></div>
+        <button id="generateBtn">Gerar caça-resultados</button>
+
+        <div style="height:10px;"></div>
+        <div class="row">
+          <button id="pngCleanBtn" class="secondary" disabled>Baixar PNG limpa</button>
+          <button id="pngKeyBtn" class="secondary" disabled>Baixar PNG gabarito</button>
+        </div>
+
+        <div style="height:10px;"></div>
+        <div class="row">
+          <button id="pdfCleanBtn" class="secondary" disabled>Baixar PDF limpa</button>
+          <button id="pdfKeyBtn" class="secondary" disabled>Baixar PDF gabarito</button>
+        </div>
+
+        <div style="height:10px;"></div>
+        <div class="small">Log:</div>
+        <div id="log" class="log">Aguardando…</div>
+      </div>
+    </div>
+
+    <div class="colRight">
+      <div class="card">
+        <div class="pill">Prévia</div>
+        <canvas id="canvas" width="2480" height="3508"></canvas>
+        <div class="hint" style="margin-top:10px;">
+          No impresso, os alunos devem encontrar, na grade, uma expressão que dê cada resultado da lista.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <script>
+  (() => {
+    const $ = (id) => document.getElementById(id);
+    const canvas = $("canvas");
+    const ctx = canvas.getContext("2d", { alpha: false });
+    const logEl = $("log");
+
+    // ====== PRESETS (mesmo padrão do seu Falange) ======
+    const THEMES = {
+      CLASSICO: {
+        name: "Falange Clássico",
+        background: { type: "checkered", a: "#ffffff", b: "#f3f4f6", sizeRatio: 0.018 },
+        grid: { color: "#000000", line: 6 },
+        border: { color: "#000000", width: 16, double: false },
+        letters: { color: "#111827", weight: 900, family: "system-ui, Arial" },
+        numbers: { col: "#1d4ed8", row: "#dc2626" },
+        key: { fill: "rgba(239,68,68,0.22)", stroke: "#dc2626", strokeW: 14 },
+        footer: { color: "#111827" }
+      },
+      CLEAN: {
+        name: "Falange Clean",
+        background: { type: "solid", a: "#ffffff" },
+        grid: { color: "#9ca3af", line: 3 },
+        border: { color: "#111827", width: 8, double: false },
+        letters: { color: "#111827", weight: 800, family: "system-ui, Arial" },
+        numbers: { col: "#2563eb", row: "#ef4444" },
+        key: { fill: "rgba(239,68,68,0.12)", stroke: "#ef4444", strokeW: 10 },
+        footer: { color: "#111827" }
+      },
+      INFANTIL: {
+        name: "Falange Infantil",
+        background: { type: "checkered", a: "#ffffff", b: "#f8fafc", sizeRatio: 0.022 },
+        grid: { color: "#111827", line: 7 },
+        border: { color: "#000000", width: 18, double: true },
+        letters: { color: "#0f172a", weight: 900, family: "system-ui, Arial" },
+        numbers: { col: "#1d4ed8", row: "#dc2626" },
+        key: { fill: "rgba(250,204,21,0.30)", stroke: "#dc2626", strokeW: 14 },
+        footer: { color: "#0f172a" }
+      },
+      DARK: {
+        name: "Falange Dark",
+        background: { type: "solid", a: "#0b1220" },
+        grid: { color: "#374151", line: 5 },
+        border: { color: "#ffffff", width: 14, double: false },
+        letters: { color: "#ffffff", weight: 900, family: "system-ui, Arial" },
+        numbers: { col: "#60a5fa", row: "#f87171" },
+        key: { fill: "rgba(248,113,113,0.18)", stroke: "#fb7185", strokeW: 12 },
+        footer: { color: "#e5e7eb" }
+      },
+      ARCADE: {
+        name: "Falange Arcade",
+        background: { type: "solid", a: "#071a3a" },
+        grid: { color: "#60a5fa", line: 4 },
+        border: { color: "#ffffff", width: 16, double: true },
+        letters: { color: "#ffffff", weight: 900, family: "system-ui, Arial" },
+        numbers: { col: "#93c5fd", row: "#fca5a5" },
+        key: { fill: "rgba(34,197,94,0.10)", stroke: "#22c55e", strokeW: 10 },
+        footer: { color: "#e5e7eb" }
+      }
+    };
+
+    function log(msg){ logEl.textContent = String(msg); }
+
+    // ===== Util =====
+    function randInt(min, maxInclusive){
+      return Math.floor(Math.random() * (maxInclusive - min + 1)) + min;
+    }
+    function buildDirections(mode){
+      const dirs = [];
+      if (mode.includes("H")) { dirs.push({dx: 1, dy: 0}); dirs.push({dx: -1, dy: 0}); }
+      if (mode.includes("V")) { dirs.push({dx: 0, dy: 1}); dirs.push({dx: 0, dy: -1}); }
+      if (mode.includes("D")) {
+        dirs.push({dx: 1, dy: 1});
+        dirs.push({dx: -1, dy: -1});
+        dirs.push({dx: 1, dy: -1});
+        dirs.push({dx: -1, dy: 1});
+      }
+      return dirs;
+    }
+    function fits(r, c, len, dx, dy, rows, cols){
+      const r2 = r + dy * (len - 1);
+      const c2 = c + dx * (len - 1);
+      return (r2 >= 0 && r2 < rows && c2 >= 0 && c2 < cols);
+    }
+    function canPlace(grid, r, c, seqArr, dx, dy){
+      for (let i = 0; i < seqArr.length; i++){
+        const rr = r + dy * i, cc = c + dx * i;
+        const ch = grid[rr][cc];
+        if (ch !== "" && ch !== seqArr[i]) return false;
+      }
+      return true;
+    }
+    function placeSeq(grid, r, c, seqArr, dx, dy){
+      const path = [];
+      for (let i = 0; i < seqArr.length; i++){
+        const rr = r + dy * i, cc = c + dx * i;
+        grid[rr][cc] = seqArr[i];
+        path.push([rr, cc]);
+      }
+      return path;
+    }
+    function makeGrid(rows, cols){
+      return Array.from({length: rows}, () => Array.from({length: cols}, () => ""));
+    }
+
+    function parseList(raw){
+      return raw.split(/\r?\n/g).map(s => s.trim()).filter(Boolean).map(s => Number(s)).filter(n => Number.isFinite(n));
+    }
+
+    // ===== Preenchimento aleatório =====
+    function getFillPool(fillMode){
+      if (fillMode !== "MIX") return "0123456789";
+
+      let ops = "";
+      if ($("fillAdd")?.checked) ops += "+";
+      if ($("fillSub")?.checked) ops += "−";
+      if ($("fillMul")?.checked) ops += "×";
+      if ($("fillDiv")?.checked) ops += "÷";
+      if ($("fillEq")?.checked)  ops += "=";
+
+      return "0123456789" + (ops || "");
+    }
+
+    function fillRandom(grid, fillMode){
+      const pool = getFillPool(fillMode);
+      for (let r = 0; r < grid.length; r++){
+        for (let c = 0; c < grid[0].length; c++){
+          if (!grid[r][c]) grid[r][c] = pool[randInt(0, pool.length - 1)];
+        }
+      }
+    }
+
+    // ===== Gerador de expressões (1 operação) =====
+    function allowedOps(){
+      const ops = [];
+      if ($("opAdd").checked) ops.push("+");
+      if ($("opSub").checked) ops.push("-");
+      if ($("opMul").checked) ops.push("×");
+      if ($("opDiv").checked) ops.push("÷");
+      return ops;
+    }
+
+    function exprToSeq(a, op, b, res){
+      // sem espaços, 1 char por célula
+      // exemplo: 12+7=19
+      return String(a) + op + String(b) + "=" + String(res);
+    }
+
+    function makeExprFromResult(target, cfg){
+      const ops = cfg.ops;
+      const aMin = cfg.aMin, aMax = cfg.aMax;
+
+      for (let t = 0; t < 2000; t++){
+        const op = ops[randInt(0, ops.length - 1)];
+
+        if (op === "+"){
+          const a = randInt(aMin, aMax);
+          const b = target - a;
+          if (b < aMin || b > aMax) continue;
+          return { a, b, op, res: target, seq: exprToSeq(a, op, b, target) };
+        }
+
+        if (op === "-"){
+          const b = randInt(aMin, aMax);
+          const a = target + b;
+          if (a < aMin || a > aMax) continue;
+          return { a, b, op, res: target, seq: exprToSeq(a, op, b, target) };
+        }
+
+        if (op === "×"){
+          if (target === 0){
+            const a = randInt(aMin, aMax);
+            const b = 0;
+            if (b < aMin || b > aMax) continue;
+            return { a, b, op, res: target, seq: exprToSeq(a, op, b, target) };
+          }
+          const a = randInt(aMin, aMax);
+          if (a === 0) continue;
+          if (target % a !== 0) continue;
+          const b = target / a;
+          if (!Number.isInteger(b) || b < aMin || b > aMax) continue;
+          return { a, b, op, res: target, seq: exprToSeq(a, op, b, target) };
+        }
+
+        if (op === "÷"){
+          const b = randInt(Math.max(1, aMin), Math.max(1, aMax));
+          const a = target * b;
+          if (!Number.isInteger(a) || a < aMin || a > aMax) continue;
+          return { a, b, op, res: target, seq: exprToSeq(a, op, b, target) };
+        }
+      }
+      return null;
+    }
+
+    function makeRandomExpr(cfg){
+      const ops = cfg.ops;
+      const aMin = cfg.aMin, aMax = cfg.aMax;
+      const resMin = cfg.resMin, resMax = cfg.resMax;
+      const allowNeg = cfg.allowNeg;
+
+      for (let t = 0; t < 4000; t++){
+        const op = ops[randInt(0, ops.length - 1)];
+        let a = randInt(aMin, aMax);
+        let b = randInt(aMin, aMax);
+        let res;
+
+        if (op === "+"){
+          res = a + b;
+        } else if (op === "-"){
+          res = a - b;
+          if (!allowNeg && res < 0) {
+            const tmp = a; a = b; b = tmp;
+            res = a - b;
+          }
+        } else if (op === "×"){
+          res = a * b;
+        } else if (op === "÷"){
+          b = randInt(Math.max(1, aMin), Math.max(1, aMax));
+          res = randInt(resMin, resMax);
+          a = res * b;
+          if (a < aMin || a > aMax) continue;
+        }
+
+        if (!allowNeg && res < 0) continue;
+        if (res < resMin || res > resMax) continue;
+
+        return { a, b, op, res, seq: exprToSeq(a, op, b, res) };
+      }
+      return null;
+    }
+
+    // ===== Background =====
+    function drawBackground(theme){
+      if (theme.background.type === "solid"){
+        ctx.fillStyle = theme.background.a;
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        return;
+      }
+      const size = Math.max(18, Math.floor(Math.min(canvas.width, canvas.height) * theme.background.sizeRatio));
+      for (let y = 0; y < canvas.height; y += size){
+        for (let x = 0; x < canvas.width; x += size){
+          const dark = ((x/size + y/size) % 2) === 0;
+          ctx.fillStyle = dark ? theme.background.b : theme.background.a;
+          ctx.fillRect(x, y, size, size);
+        }
+      }
+    }
+
+    // ===== Render Falange (adaptado para lista de resultados no PNG) =====
+    function renderFalange(grid, solutionPaths, withKey, theme, opts){
+      const rows = grid.length, cols = grid[0].length;
+      const outer = opts.outer;
+
+      const escola = ($("escola")?.value || "").trim();
+      const professor = ($("professor")?.value || "").trim();
+      const disciplina = ($("disciplina")?.value || "").trim();
+      const aluno = ($("aluno")?.value || "").trim();
+      const turma = ($("turma")?.value || "").trim();
+      const dataTxt = ($("data")?.value || "").trim();
+
+      const hasHeader = $("usarCabecalho")?.checked;
+      const headerH = hasHeader ? Math.max(160, Math.floor(canvas.height * 0.10)) : 0;
+
+      const numbersOn = opts.numbersOn;
+      const numberPad = numbersOn ? Math.max(90, Math.floor(Math.min(canvas.width, canvas.height) * 0.03)) : 0;
+
+      const footerH = opts.footerText ? Math.max(90, Math.floor(Math.min(canvas.width, canvas.height) * 0.03)) : 0;
+
+      const showResults = !!opts.showResults && Array.isArray(opts.results) && opts.results.length;
+      const resultsH = showResults ? Math.max(220, Math.floor(canvas.height * 0.12)) : 0;
+
+      const startX = outer + numberPad;
+      const startY = outer + numberPad + headerH;
+      const gridW = canvas.width - 2*outer - numberPad;
+      const gridH = canvas.height - 2*outer - numberPad - footerH - headerH - resultsH;
+
+      if (gridW <= 50 || gridH <= 50) {
+        throw new Error("Canvas pequeno demais. Aumente o PNG ou reduza margens/itens.");
+      }
+
+      const cellW = gridW / cols;
+      const cellH = gridH / rows;
+
+      drawBackground(theme);
+
+      if (hasHeader){
+        ctx.save();
+        ctx.fillStyle = theme.footer.color;
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+
+        const t1 = Math.max(26, Math.floor(canvas.height * 0.018));
+        const t2 = Math.max(22, Math.floor(canvas.height * 0.016));
+
+        let y = outer;
+        ctx.font = `800 ${t1}px system-ui, Arial`;
+        ctx.fillText(`Escola: ${escola || "________________________"}`, outer, y); y += t1 + 10;
+        ctx.fillText(`Professor: ${professor || "________________________"}`, outer, y); y += t1 + 10;
+        ctx.fillText(`Disciplina: ${disciplina || "________________________"}`, outer, y); y += t1 + 10;
+
+        ctx.font = `700 ${t2}px system-ui, Arial`;
+        const linhaAluno = `Aluno: ${aluno || "____________"}   Turma: ${turma || "____"}   Data: ${dataTxt || "__/__/____"}`;
+        ctx.fillText(linhaAluno, outer, y);
+
+        ctx.restore();
+      }
+
+      const lineW = theme.grid.line;
+      ctx.save();
+      ctx.lineWidth = lineW;
+      ctx.strokeStyle = theme.grid.color;
+      for (let r = 0; r <= rows; r++){
+        const y = startY + r*cellH;
+        ctx.beginPath(); ctx.moveTo(startX, y); ctx.lineTo(startX + gridW, y); ctx.stroke();
+      }
+      for (let c = 0; c <= cols; c++){
+        const x = startX + c*cellW;
+        ctx.beginPath(); ctx.moveTo(x, startY); ctx.lineTo(x, startY + gridH); ctx.stroke();
+      }
+      ctx.restore();
+
+      ctx.save();
+      ctx.strokeStyle = theme.border.color;
+      ctx.lineWidth = theme.border.width;
+      ctx.strokeRect(startX, startY, gridW, gridH);
+      if (theme.border.double){
+        ctx.lineWidth = Math.max(2, Math.floor(theme.border.width * 0.35));
+        ctx.strokeRect(
+          startX + theme.border.width*0.7,
+          startY + theme.border.width*0.7,
+          gridW - theme.border.width*1.4,
+          gridH - theme.border.width*1.4
+        );
+      }
+      ctx.restore();
+
+      if (withKey){
+        ctx.save();
+        ctx.strokeStyle = theme.key.stroke;
+        ctx.lineWidth = theme.key.strokeW;
+        ctx.lineCap = "round";
+        for (const path of solutionPaths){
+          if (path.length < 2) continue;
+          const [r0,c0] = path[0];
+          const [r1,c1] = path[path.length - 1];
+          const x0 = startX + c0*cellW + cellW/2;
+          const y0 = startY + r0*cellH + cellH/2;
+          const x1 = startX + c1*cellW + cellW/2;
+          const y1 = startY + r1*cellH + cellH/2;
+          ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x1,y1); ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      const baseCell = Math.min(cellW, cellH);
+      const fontSize = Math.max(22, Math.floor(baseCell * 0.62));
+      ctx.save();
+      ctx.fillStyle = theme.letters.color;
+      ctx.font = `${theme.letters.weight} ${fontSize}px ${theme.letters.family}`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      for (let r = 0; r < rows; r++){
+        for (let c = 0; c < cols; c++){
+          const x = startX + c*cellW + cellW/2;
+          const y = startY + r*cellH + cellH/2;
+          ctx.fillText(grid[r][c], x, y + 1);
+        }
+      }
+      ctx.restore();
+
+      if (numbersOn){
+        const numFont = Math.max(26, Math.floor(baseCell * 0.38));
+        ctx.save();
+        ctx.font = `900 ${numFont}px system-ui, Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.fillStyle = theme.numbers.col;
+        for (let c = 0; c < cols; c++){
+          const x = startX + c*cellW + cellW/2;
+          const y = startY - numberPad/2;
+          ctx.fillText(String(c+1), x, y);
+        }
+
+        ctx.fillStyle = theme.numbers.row;
+        for (let r = 0; r < rows; r++){
+          const x = startX - numberPad/2;
+          const y = startY + r*cellH + cellH/2;
+          ctx.fillText(String(r+1), x, y);
+        }
+        ctx.restore();
+      }
+
+      if (showResults){
+        const boxY = startY + gridH + Math.max(12, Math.floor(outer*0.10));
+        const boxX = startX;
+        const boxW = gridW;
+        const boxH = resultsH - Math.max(10, Math.floor(outer*0.10));
+
+        ctx.save();
+        ctx.strokeStyle = theme.grid.color;
+        ctx.lineWidth = Math.max(2, Math.floor(theme.grid.line * 0.6));
+        ctx.strokeRect(boxX, boxY, boxW, boxH);
+
+        const titleSize = Math.max(26, Math.floor(canvas.height * 0.018));
+        const textSize  = Math.max(22, Math.floor(canvas.height * 0.016));
+
+        ctx.fillStyle = theme.footer.color;
+        ctx.font = `900 ${titleSize}px system-ui, Arial`;
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        ctx.fillText("RESULTADOS (encontre uma expressão para cada):", boxX + 18, boxY + 14);
+
+        const list = opts.results.map(x => String(x));
+        const colsWanted = (list.length <= 12) ? 2 : (list.length <= 24 ? 3 : 4);
+        const colW = (boxW - 36) / colsWanted;
+        const startTextY = boxY + 14 + titleSize + 10;
+        ctx.font = `800 ${textSize}px system-ui, Arial`;
+
+        let i = 0;
+        for (let cc = 0; cc < colsWanted; cc++){
+          let y = startTextY;
+          for (let rr = 0; rr < 999; rr++){
+            if (i >= list.length) break;
+            const x = boxX + 18 + cc*colW;
+            ctx.fillText(`• ${list[i]}`, x, y);
+            y += textSize + 8;
+            i++;
+            if (y > boxY + boxH - textSize - 10) break;
+          }
+        }
+
+        ctx.restore();
+      }
+
+      if (opts.footerText){
+        ctx.save();
+        const fSize = Math.max(22, Math.floor(Math.min(canvas.width, canvas.height) * 0.018));
+        ctx.fillStyle = theme.footer.color;
+        ctx.font = `800 ${fSize}px system-ui, Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(opts.footerText, canvas.width/2, canvas.height - outer/2);
+        ctx.restore();
+      }
+    }
+
+    // ===== Generator (Caça-Resultados) =====
+    function generate(){
+      const rows = Math.max(5, Math.min(60, Number($("rows").value || 13)));
+      const cols = Math.max(5, Math.min(60, Number($("cols").value || 13)));
+      const triesMax = Math.max(50, Math.min(8000, Number($("tries").value || 1200)));
+      const dirsMode = $("dirs").value;
+      const fillMode = $("fillMode").value;
+      const dirs = buildDirections(dirsMode);
+
+      const ops = allowedOps();
+      if (!dirs.length){ log("Escolha pelo menos uma direção."); return null; }
+      if (!ops.length){ log("Marque pelo menos uma operação (+, −, ×, ÷)."); return null; }
+
+      const cfg = {
+        ops,
+        resMin: Number($("resMin").value ?? 0),
+        resMax: Number($("resMax").value ?? 50),
+        aMin: Number($("aMin").value ?? 0),
+        aMax: Number($("aMax").value ?? 20),
+        allowNeg: $("allowNeg").checked
+      };
+
+      const mode = $("mode").value;
+
+      let targets = [];
+      if (mode === "LIST"){
+        targets = parseList($("resultsList").value);
+        if (!targets.length){ log("Lista de resultados vazia."); return null; }
+      } else {
+        const qtd = Math.max(4, Math.min(40, Number($("qtd").value || 12)));
+        const seen = new Set();
+        let guard = 0;
+        while (targets.length < qtd && guard < 10000){
+          guard++;
+          const ex = makeRandomExpr(cfg);
+          if (!ex) break;
+          const k = String(ex.res);
+          if (seen.has(k)) continue;
+          seen.add(k);
+          targets.push(ex.res);
+        }
+        if (!targets.length){ log("Não consegui gerar resultados com essas regras. Ajuste limites."); return null; }
+      }
+
+      const grid = makeGrid(rows, cols);
+      const solutionPaths = [];
+      const placed = [];
+      const failed = [];
+
+      const expressions = [];
+      for (const target of targets){
+        const e = makeExprFromResult(target, cfg);
+        if (!e){ failed.push(String(target)); continue; }
+        expressions.push(e);
+      }
+
+      expressions.sort((a,b) => b.seq.length - a.seq.length);
+
+      for (const exp of expressions){
+        let ok = false;
+        const seqArr = Array.from(exp.seq);
+
+        for (let t = 0; t < triesMax; t++){
+          const dir = dirs[randInt(0, dirs.length - 1)];
+          const r = randInt(0, rows - 1);
+          const c = randInt(0, cols - 1);
+          if (!fits(r, c, seqArr.length, dir.dx, dir.dy, rows, cols)) continue;
+          if (!canPlace(grid, r, c, seqArr, dir.dx, dir.dy)) continue;
+
+          solutionPaths.push(placeSeq(grid, r, c, seqArr, dir.dx, dir.dy));
+          placed.push(exp);
+          ok = true;
+          break;
+        }
+        if (!ok) failed.push(String(exp.res));
+      }
+
+      fillRandom(grid, fillMode);
+
+      if (failed.length){
+        log("Gerou, mas não couberam (resultados):\n- " + failed.join("\n- ") +
+            "\n\nDicas: aumente a grade, reduza quantidade, ou diminua tamanho dos números (limites).");
+      } else {
+        log(`OK! ${placed.length} expressões posicionadas.`);
+      }
+
+      return {
+        grid,
+        solutionPaths,
+        targets,
+        placed,
+        failed,
+        rows,
+        cols,
+        answerKey: placed.map(p => `${p.seq}  (resultado ${p.res})`)
+      };
+    }
+
+    // ===== Download =====
+    function downloadPNG(filename){
+      const a = document.createElement("a");
+      a.download = filename;
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+    }
+    function downloadPDF(filename){
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: canvas.width >= canvas.height ? "landscape" : "portrait",
+        unit: "px",
+        format: [canvas.width, canvas.height]
+      });
+      const imgData = canvas.toDataURL("image/png");
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+      pdf.save(filename);
+    }
+
+    // ===== UI wiring =====
+    function setSize(w,h){
+      $("w").value = w; $("h").value = h;
+      canvas.width = w; canvas.height = h;
+      ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+      log(`Canvas ajustado para ${w}×${h}.`);
+    }
+    $("a4p").addEventListener("click", () => setSize(2480, 3508));
+    $("a4l").addEventListener("click", () => setSize(3508, 2480));
+    $("custom").addEventListener("click", () => setSize(
+      Math.max(300, Number($("w").value || 2480)),
+      Math.max(300, Number($("h").value || 3508))
+    ));
+
+    function syncModeUI(){
+      const mode = $("mode").value;
+      $("autoBox").classList.toggle("hide", mode !== "AUTO");
+      $("listBox").classList.toggle("hide", mode !== "LIST");
+    }
+    $("mode").addEventListener("change", syncModeUI);
+    syncModeUI();
+
+    // NOVO: mostra/esconde a caixa de operadores do preenchimento
+    function syncFillUI(){
+      const isMix = $("fillMode").value === "MIX";
+      $("fillOpsBox").classList.toggle("hide", !isMix);
+    }
+    $("fillMode").addEventListener("change", syncFillUI);
+    syncFillUI();
+
+    let last = null;
+
+    function renderNow(withKey){
+      if (!last) return;
+      const theme = THEMES[$("preset").value] || THEMES.CLASSICO;
+      const numbersOn = $("numbers").value === "ON";
+      const usarBNCC = $("usarBNCC")?.checked;
+      const footerText = usarBNCC ? ($("footer").value || "").trim() : "";
+
+      const outer = Math.max(80, Math.floor(Math.min(canvas.width, canvas.height) * 0.04));
+
+      const showResults = $("usarResultados")?.checked;
+      const results = last.targets;
+
+      renderFalange(last.grid, last.solutionPaths, withKey, theme, {
+        numbersOn,
+        footerText,
+        outer,
+        showResults,
+        results
+      });
+
+      if (withKey){
+        const map = last.answerKey.join("\n");
+        log("GABARITO (expressões):\n" + map);
+      }
+    }
+
+    $("generateBtn").addEventListener("click", () => {
+      const W = Math.max(300, Math.min(8000, Number($("w").value || 2480)));
+      const H = Math.max(300, Math.min(8000, Number($("h").value || 3508)));
+      canvas.width = W; canvas.height = H;
+
+      last = generate();
+      if (!last){
+        $("pngCleanBtn").disabled = true;
+        $("pngKeyBtn").disabled = true;
+        $("pdfCleanBtn").disabled = true;
+        $("pdfKeyBtn").disabled = true;
+        ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+        return;
+      }
+
+      try{
+        renderNow(false);
+        $("pngCleanBtn").disabled = false;
+        $("pngKeyBtn").disabled = false;
+        $("pdfCleanBtn").disabled = false;
+        $("pdfKeyBtn").disabled = false;
+      } catch(e){
+        log(e.message || String(e));
+        $("pngCleanBtn").disabled = true;
+        $("pngKeyBtn").disabled = true;
+        $("pdfCleanBtn").disabled = true;
+        $("pdfKeyBtn").disabled = true;
+      }
+    });
+
+    $("preset").addEventListener("change", () => {
+      if (!last) return;
+      try{ renderNow(false); } catch(e){ log(e.message || String(e)); }
+    });
+
+    $("pngCleanBtn").addEventListener("click", () => {
+      if (!last) return;
+      renderNow(false);
+      downloadPNG(`caca_resultados_${last.rows}x${last.cols}_${$("preset").value}_limpa.png`);
+    });
+
+    $("pngKeyBtn").addEventListener("click", () => {
+      if (!last) return;
+      renderNow(true);
+      downloadPNG(`caca_resultados_${last.rows}x${last.cols}_${$("preset").value}_gabarito.png`);
+    });
+
+    $("pdfCleanBtn").addEventListener("click", () => {
+      if (!last) return;
+      renderNow(false);
+      downloadPDF(`caca_resultados_${last.rows}x${last.cols}_${$("preset").value}_limpa.pdf`);
+    });
+
+    $("pdfKeyBtn").addEventListener("click", () => {
+      if (!last) return;
+      renderNow(true);
+      downloadPDF(`caca_resultados_${last.rows}x${last.cols}_${$("preset").value}_gabarito.pdf`);
+    });
+
+    ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+    log("Escolha o preset e clique em “Gerar caça-resultados”.");
+  })();
+  </script>
+</body>
+</html>
