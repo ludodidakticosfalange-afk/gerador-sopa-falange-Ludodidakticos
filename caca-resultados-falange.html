@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Caça-Resultados — Falange Presets (A4 300 DPI + PNG)</title>
+  <title>Caça-Resultados — Profissional Presets (A4 300 DPI + PNG)</title>
   <style>
   body{
     margin:0;
@@ -150,6 +150,51 @@
   }
   .chk input{width:auto;margin:0}
   .hide{display:none !important;}
+.tabs{
+  max-width:1200px;
+  margin:0 auto 14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.tab{
+  border:1px solid #1f2937;
+  background:#111827;
+  color:#e5e7eb;
+  padding:10px 14px;
+  border-radius:14px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.tab.active{
+  background:#2563eb;
+  border-color:#2563eb;
+  color:#fff;
+  box-shadow:0 14px 32px rgba(37,99,235,.45);
+}
+/* CORREÇÃO: não deixar a regra global button{width:100%} afetar as abas */
+.tabs .tab{
+  width:auto !important;
+  flex:1;
+}
+/* Abas dentro da Prévia (modo compacto) */
+.tabsPreview{
+  margin:10px 0 12px;
+  display:flex;
+  gap:10px;
+  justify-content:flex-start;
+}
+
+.tabsPreview .tab{
+  width:auto !important;       /* vence o width:100% global */
+  flex:0 0 auto;               /* não estica */
+  padding:10px 14px;
+  border-radius:14px;
+}
+
 </style>
 
 </head>
@@ -167,7 +212,7 @@
     <img src="falange.png" alt="Falange">
     <img src="ludodidakticos.png.jpg" alt="Ludodidakticos">
     <div class="titles">
-      <h1>Caça-Resultados — Falange Premium</h1>
+      <h1>Caça-Resultados — Profissional Premium</h1>
       <p>Gerador A4 300 DPI • PNG/PDF limpo + gabarito</p>
     </div>
   </div>
@@ -179,7 +224,6 @@
     </button>
   </div>
 </div>
-
 
   <div class="wrap">
     <div class="colLeft">
@@ -223,6 +267,10 @@
           Incluir cabeçalho no PNG
         </label>
       </div>
+<label class="check">
+  <input type="checkbox" id="onlyLetters">
+  <span>Modo “Só letras” (sem linhas e bordas)</span>
+</label>
 
       <!-- CARD / CONTROLES -->
       <div class="card">
@@ -230,11 +278,11 @@
 
         <label>Preset Falange</label>
         <select id="preset">
-          <option value="CLASSICO" selected>Falange Clássico (Oficial)</option>
-          <option value="CLEAN">Falange Clean (Minimalista)</option>
-          <option value="INFANTIL">Falange Infantil (Lúdico)</option>
-          <option value="DARK">Falange Dark (Tela/Projetor)</option>
-          <option value="ARCADE">Falange Arcade (NeoGeo)</option>
+          <option value="CLASSICO" selected> Clássico (Oficial)</option>
+          <option value="CLEAN"> Clean (Minimalista)</option>
+          <option value="INFANTIL"> Infantil (Lúdico)</option>
+          <option value="DARK"> Dark (Tela/Projetor)</option>
+          <option value="ARCADE"> Arcade (NeoGeo)</option>
         </select>
 
         <div class="row">
@@ -281,7 +329,7 @@
           </div>
           <div>
             <label>Rodapé (texto)</label>
-            <input id="footer" placeholder="Ex.: BNCC: EM13MATxxx — Tema: Operações" value="BNCC: (ajuste ao tema) — Falange Educación Lúdica" />
+            <input id="footer" placeholder="Ex.: BNCC: EM13MATxxx — Tema: Operações" value="BNCC: (ajuste ao tema) — Educacão Lúdica" />
           </div>
         </div>
 
@@ -411,6 +459,11 @@
     <div class="colRight">
       <div class="card">
         <div class="pill">Prévia</div>
+<div class="tabs tabsPreview">
+  <button id="tabBtnCaca" class="tab active" type="button">📌 Caça-Resultados</button>
+  <button id="tabBtnGabarito" class="tab" type="button">✅ Gabarito</button>
+</div>
+
         <canvas id="canvas" width="2480" height="3508"></canvas>
         <div class="hint" style="margin-top:10px;">
           No impresso, os alunos devem encontrar, na grade, uma expressão que dê cada resultado da lista.
@@ -427,11 +480,26 @@
     const canvas = $("canvas");
     const ctx = canvas.getContext("2d", { alpha: false });
     const logEl = $("log");
+  // ====== ABAS DA PRÉVIA (LIMPO / GABARITO) ======
+  const tabBtnCaca = $("tabBtnCaca");
+  const tabBtnGabarito = $("tabBtnGabarito");
+
+  let previewMode = "CACA"; // "CACA" = limpo | "GAB" = gabarito
+
+  function setPreviewMode(mode){
+    previewMode = mode;
+    tabBtnCaca?.classList.toggle("active", mode === "CACA");
+    tabBtnGabarito?.classList.toggle("active", mode === "GAB");
+    if (last) renderNow(mode === "GAB"); // atualiza a prévia
+  }
+
+  tabBtnCaca?.addEventListener("click", () => setPreviewMode("CACA"));
+  tabBtnGabarito?.addEventListener("click", () => setPreviewMode("GAB"));
 
     // ====== PRESETS (mesmo padrão do seu Falange) ======
     const THEMES = {
       CLASSICO: {
-        name: "Falange Clássico",
+        name: "Clássico",
         background: { type: "checkered", a: "#ffffff", b: "#f3f4f6", sizeRatio: 0.018 },
         grid: { color: "#000000", line: 6 },
         border: { color: "#000000", width: 16, double: false },
@@ -451,7 +519,7 @@
         footer: { color: "#111827" }
       },
       INFANTIL: {
-        name: "Falange Infantil",
+        name: "Infantil",
         background: { type: "checkered", a: "#ffffff", b: "#f8fafc", sizeRatio: 0.022 },
         grid: { color: "#111827", line: 7 },
         border: { color: "#000000", width: 18, double: true },
@@ -461,7 +529,7 @@
         footer: { color: "#0f172a" }
       },
       DARK: {
-        name: "Falange Dark",
+        name: "Dark",
         background: { type: "solid", a: "#0b1220" },
         grid: { color: "#374151", line: 5 },
         border: { color: "#ffffff", width: 14, double: false },
@@ -471,7 +539,7 @@
         footer: { color: "#e5e7eb" }
       },
       ARCADE: {
-        name: "Falange Arcade",
+        name: "Arcade",
         background: { type: "solid", a: "#071a3a" },
         grid: { color: "#60a5fa", line: 4 },
         border: { color: "#ffffff", width: 16, double: true },
@@ -673,6 +741,7 @@
     function renderFalange(grid, solutionPaths, withKey, theme, opts){
       const rows = grid.length, cols = grid[0].length;
       const outer = opts.outer;
+const onlyLetters = !!opts.onlyLetters;
 
       const escola = ($("escola")?.value || "").trim();
       const professor = ($("professor")?.value || "").trim();
@@ -727,6 +796,7 @@
 
         ctx.restore();
       }
+if (!onlyLetters) {
 
       const lineW = theme.grid.line;
       ctx.save();
@@ -741,8 +811,10 @@
         ctx.beginPath(); ctx.moveTo(x, startY); ctx.lineTo(x, startY + gridH); ctx.stroke();
       }
       ctx.restore();
-
-      ctx.save();
+}
+if (!onlyLetters) {
+      
+ctx.save();
       ctx.strokeStyle = theme.border.color;
       ctx.lineWidth = theme.border.width;
       ctx.strokeRect(startX, startY, gridW, gridH);
@@ -756,6 +828,8 @@
         );
       }
       ctx.restore();
+}
+
 
       if (withKey){
         ctx.save();
@@ -790,6 +864,7 @@
         }
       }
       ctx.restore();
+
 
       if (numbersOn){
         const numFont = Math.max(26, Math.floor(baseCell * 0.38));
@@ -1029,13 +1104,17 @@
       const showResults = $("usarResultados")?.checked;
       const results = last.targets;
 
-      renderFalange(last.grid, last.solutionPaths, withKey, theme, {
-        numbersOn,
-        footerText,
-        outer,
-        showResults,
-        results
-      });
+      const onlyLetters = $("onlyLetters")?.checked;
+
+renderFalange(last.grid, last.solutionPaths, withKey, theme, {
+  numbersOn,
+  footerText,
+  outer,
+  showResults,
+  results,
+  onlyLetters
+});
+
 
       if (withKey){
         const map = last.answerKey.join("\n");
@@ -1059,7 +1138,8 @@
       }
 
       try{
-        renderNow(false);
+        renderNow(previewMode === "GAB");
+
         $("pngCleanBtn").disabled = false;
         $("pngKeyBtn").disabled = false;
         $("pdfCleanBtn").disabled = false;

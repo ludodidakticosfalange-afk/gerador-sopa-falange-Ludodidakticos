@@ -4,7 +4,7 @@ g="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sopa de Letras — Falange Presets (A4 300 DPI + PNG)</title>
+  <title>Sopa de Letras — Profissional Presets (A4 300 DPI + PNG)</title>
   <style>
   body{
     margin:0;
@@ -176,14 +176,14 @@ g="pt-BR">
 
 </head>
 <body>
-  <h2 style="margin:0 0 10px;">Sopa de Letras — Presets Falange (HTML → PNG)</h2>
+  <h2 style="margin:0 0 10px;">Sopa de Letras — Presets Profissional (HTML → PNG)</h2>
 <!-- TOPBAR PADRÃO FALANGE -->
 <div class="topbar">
   <div class="brand">
     <img src="falange.png" alt="Falange Educación Lúdica">
     <img src="ludodidakticos.png.jpg" alt="Ludodidakticos">
     <div class="titles">
-      <h1>Sopa de Letras — Falange Premium</h1>
+      <h1>Sopa de Letras — Profissional Premium</h1>
       <p>Gerador A4 300 DPI • PNG/PDF limpa + gabarito</p>
     </div>
   </div>
@@ -257,11 +257,11 @@ g="pt-BR">
 
       <label>Preset Falange</label>
       <select id="preset">
-        <option value="CLASSICO" selected>Falange Clássico (Oficial)</option>
-        <option value="CLEAN">Falange Clean (Minimalista)</option>
-        <option value="INFANTIL">Falange Infantil (Lúdico)</option>
-        <option value="DARK">Falange Dark (Tela/Projetor)</option>
-        <option value="ARCADE">Falange Arcade (NeoGeo)</option>
+        <option value="CLASSICO" selected>Clássico (Oficial)</option>
+        <option value="CLEAN">Clean (Minimalista)</option>
+        <option value="INFANTIL">Infantil (Lúdico)</option>
+        <option value="DARK">Dark (Tela/Projetor)</option>
+        <option value="ARCADE">Arcade (NeoGeo)</option>
       </select>
 
       <div class="row">
@@ -308,7 +308,7 @@ g="pt-BR">
         </div>
         <div>
           <label>Rodapé (texto)</label>
-          <input id="footer" placeholder="Ex.: BNCC: EFxxLPxx — Tema: Animais" value="BNCC: (ajuste ao tema) — Falange Educación Lúdica & Ludodidakticos"/>
+          <input id="footer" placeholder="Ex.: BNCC: EFxxLPxx — Tema: Animais" value="BNCC: (ajuste ao tema) — Educação Lúdica"/>
         </div>
       </div>
 <label style="margin-top:8px;display:flex;gap:8px;align-items:center;">
@@ -416,7 +416,7 @@ let activePreview = "clean"; // "clean" ou "key"
   // ====== PRESETS ======
   const THEMES = {
     CLASSICO: {
-      name: "Falange Clássico",
+      name: "Clássico",
       background: { type: "checkered", a: "#ffffff", b: "#f3f4f6", sizeRatio: 0.018 },
       grid: { color: "#000000", line: 6 },
       border: { color: "#000000", width: 16, double: false },
@@ -426,7 +426,7 @@ let activePreview = "clean"; // "clean" ou "key"
       footer: { color: "#111827" }
     },
     CLEAN: {
-      name: "Falange Clean",
+      name: "Clean",
       background: { type: "solid", a: "#ffffff" },
       grid: { color: "#9ca3af", line: 3 },
       border: { color: "#111827", width: 8, double: false },
@@ -436,7 +436,7 @@ let activePreview = "clean"; // "clean" ou "key"
       footer: { color: "#111827" }
     },
     INFANTIL: {
-      name: "Falange Infantil",
+      name: "Infantil",
       background: { type: "checkered", a: "#ffffff", b: "#f8fafc", sizeRatio: 0.022 },
       grid: { color: "#111827", line: 7 },
       border: { color: "#000000", width: 18, double: true }, // borda dupla
@@ -446,7 +446,7 @@ let activePreview = "clean"; // "clean" ou "key"
       footer: { color: "#0f172a" }
     },
     DARK: {
-      name: "Falange Dark",
+      name: "Dark",
       background: { type: "solid", a: "#0b1220" },
       grid: { color: "#374151", line: 5 },
       border: { color: "#ffffff", width: 14, double: false },
@@ -456,7 +456,7 @@ let activePreview = "clean"; // "clean" ou "key"
       footer: { color: "#e5e7eb" }
     },
     ARCADE: {
-      name: "Falange Arcade",
+      name: "Arcade",
       background: { type: "solid", a: "#071a3a" },
       grid: { color: "#60a5fa", line: 4 },
       border: { color: "#ffffff", width: 16, double: true },
