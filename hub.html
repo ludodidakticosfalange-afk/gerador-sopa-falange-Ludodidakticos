@@ -83,6 +83,19 @@ body{
   border: 1px solid rgba(255,255,255,.08);
   backdrop-filter: blur(10px);
 }
+/* Destaque visual do link Enviar sugestão */
+.suggest-link{
+  color:#60a5fa;              /* azul claro iluminado */
+  font-weight:600;
+  text-decoration:none;
+  text-shadow:0 0 8px rgba(96,165,250,.55);
+  transition:all .2s ease;
+}
+
+.suggest-link:hover{
+  color:#93c5fd;
+  text-shadow:0 0 14px rgba(147,197,253,.85);
+}
 
   </style>
 </head>
@@ -112,6 +125,18 @@ body{
     </a>
 
     <button class="btn secondary" onclick="sair()">🚪 Sair</button>
+<div class="card" style="margin-top:16px;">
+  <div class="pill">Suas sugestões são sempre bem-vindas!</div>
+
+  <p style="font-size:12px;color:rgba(234,242,255,.7);margin:8px 0 10px;">
+    Este espaço é para sugestões de atividades e melhorias.
+    As ideias são analisadas periodicamente e podem ou não ser implementadas.
+  </p>
+
+  <a href="https://forms.gle/HkAX8hcPtTo6iFHG9" class="suggest-link">✍️ Enviar sugestão</a>
+
+</div>
+
   
  <!-- RODAPÉ INSTITUCIONAL -->
   <div style="
