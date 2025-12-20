@@ -181,6 +181,8 @@ function limpar(){
 }
 
 function entrar(){
+localStorage.setItem("falange_code", code);
+
   const raw = document.getElementById("code").value;
   const code = normCode(raw);
 
