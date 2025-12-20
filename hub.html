@@ -98,7 +98,38 @@ body{
 }
 
   </style>
-<script src="auth.js"></script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Profissional Premium — Painel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- 🔐 PROTEÇÃO DO HUB (cole AQUI) -->
+  <script>
+    (function protegerHub(){
+      const ok = localStorage.getItem("falange_ok") === "1";
+      const dataStr = localStorage.getItem("falange_activatedAt");
+      const dias = Number(localStorage.getItem("falange_days") || 0);
+
+      if(!ok || !dataStr || !dias){
+        window.location.replace("index.html");
+        return;
+      }
+
+      const inicio = new Date(dataStr + "T00:00:00");
+      const fim = new Date(inicio.getTime() + dias * 24 * 60 * 60 * 1000);
+
+      if(new Date() >= fim){
+        localStorage.removeItem("falange_ok");
+        window.location.replace("index.html");
+      }
+    })();
+  </script>
+  <!-- 🔐 FIM DA PROTEÇÃO -->
+
 
 </head>
 <body>

@@ -180,11 +180,13 @@ function limpar(){
   verificarAssinatura();
 }
 
-function entrar(){
-localStorage.setItem("falange_code", code);
 
+function entrar(){
   const raw = document.getElementById("code").value;
   const code = normCode(raw);
+
+  // agora SIM pode salvar o código digitado
+  localStorage.setItem("falange_code", code);
 
   if(!code){
     document.getElementById("msg").textContent = "Digite o código para continuar.";
@@ -207,6 +209,15 @@ localStorage.setItem("falange_code", code);
       "Assinatura expirada. Fale com o suporte para renovar.";
     return;
   }
+
+  document.getElementById("msg").textContent = "";
+  localStorage.setItem("falange_ok", "1");
+  localStorage.setItem("falange_activatedAt", cliente.activatedAt);
+  localStorage.setItem("falange_days", cliente.days);
+  window.location.href = "hub.html";
+}
+
+
 
   // liberou: entra no hub
   document.getElementById("msg").textContent = "";
