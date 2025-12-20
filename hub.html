@@ -153,8 +153,23 @@ body{
 </div>
 
 <script>
-  // proteção
-  if (localStorage.getItem("falange_ok") !== "1") {
+  <script>
+  function assinaturaValida(){
+    const ok = localStorage.getItem("falange_ok") === "1";
+    const dataStr = localStorage.getItem("falange_activatedAt");
+    const dias = Number(localStorage.getItem("falange_days") || 0);
+
+    if (!ok || !dataStr || !dias) return false;
+
+    const inicio = new Date(dataStr + "T00:00:00");
+    const fim = new Date(inicio.getTime() + dias * 24 * 60 * 60 * 1000);
+
+    return new Date() < fim;
+  }
+
+  // proteção FORTE: se não for válido, expulsa imediatamente
+  if (!assinaturaValida()){
+    localStorage.removeItem("falange_ok");
     window.location.replace("index.html");
   }
 
@@ -171,10 +186,13 @@ body{
     if(!dataStr || !dias){
       el.textContent = "❌ Assinatura não encontrada";
       el.style.color = "#dc2626";
+      // sem assinatura = volta pro portal
+      localStorage.removeItem("falange_ok");
+      window.location.replace("index.html");
       return;
     }
 
-    const inicio = new Date(dataStr);
+    const inicio = new Date(dataStr + "T00:00:00");
     const agora = new Date();
     const diff = Math.floor((agora - inicio)/(1000*60*60*24));
     const restante = dias - diff;
@@ -183,6 +201,8 @@ body{
       el.textContent = "⛔ Assinatura expirada";
       el.style.color = "#dc2626";
       localStorage.removeItem("falange_ok");
+      // expirada = volta pro portal NA HORA
+      window.location.replace("index.html");
       return;
     }
 
@@ -192,6 +212,7 @@ body{
 
   mostrarStatus();
 </script>
+
 
 </body>
 </html>
