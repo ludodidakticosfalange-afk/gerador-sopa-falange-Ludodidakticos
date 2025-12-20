@@ -167,14 +167,32 @@ body{
     return new Date() < fim;
   }
 
-  // proteção FORTE: se não for válido, expulsa imediatamente
-  if (!assinaturaValida()){
+  <script>
+  function limparAssinatura(){
     localStorage.removeItem("falange_ok");
+    localStorage.removeItem("falange_activatedAt");
+    localStorage.removeItem("falange_days");
+  }
+
+  function assinaturaAtiva(){
+    const ok = localStorage.getItem("falange_ok") === "1";
+    const dataStr = localStorage.getItem("falange_activatedAt");
+    const dias = Number(localStorage.getItem("falange_days") || 0);
+    if(!ok || !dataStr || !dias) return false;
+
+    const inicio = new Date(dataStr + "T00:00:00");
+    const fim = new Date(inicio.getTime() + dias * 24 * 60 * 60 * 1000);
+    return new Date() < fim;
+  }
+
+  // proteção REAL: se não estiver ativa, limpa e volta pro portal
+  if (!assinaturaAtiva()){
+    limparAssinatura();
     window.location.replace("index.html");
   }
 
   function sair(){
-    localStorage.removeItem("falange_ok");
+    limparAssinatura();
     window.location.replace("index.html");
   }
 
@@ -183,26 +201,22 @@ body{
     const dias = Number(localStorage.getItem("falange_days") || 0);
     const el = document.getElementById("status");
 
-    if(!dataStr || !dias){
-      el.textContent = "❌ Assinatura não encontrada";
-      el.style.color = "#dc2626";
-      // sem assinatura = volta pro portal
-      localStorage.removeItem("falange_ok");
-      window.location.replace("index.html");
-      return;
-    }
-
-    const inicio = new Date(dataStr + "T00:00:00");
+    const inicio = new Date((dataStr || "") + "T00:00:00");
     const agora = new Date();
     const diff = Math.floor((agora - inicio)/(1000*60*60*24));
     const restante = dias - diff;
 
+    if(!dataStr || !dias){
+      el.textContent = "❌ Assinatura não encontrada";
+      el.style.color = "#dc2626";
+      return;
+    }
+
     if(restante <= 0){
       el.textContent = "⛔ Assinatura expirada";
       el.style.color = "#dc2626";
-      localStorage.removeItem("falange_ok");
-      // expirada = volta pro portal NA HORA
-      window.location.replace("index.html");
+      limparAssinatura();
+      window.location.replace("index.html"); // <-- ESSA LINHA É O “EXPULSAR”
       return;
     }
 
@@ -212,6 +226,7 @@ body{
 
   mostrarStatus();
 </script>
+
 
 
 </body>
