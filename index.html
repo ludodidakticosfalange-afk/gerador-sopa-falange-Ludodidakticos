@@ -185,9 +185,6 @@ function entrar(){
   const raw = document.getElementById("code").value;
   const code = normCode(raw);
 
-  // agora SIM pode salvar o código digitado
-  
-
   if(!code){
     document.getElementById("msg").textContent = "Digite o código para continuar.";
     return;
@@ -196,36 +193,25 @@ function entrar(){
   const cliente = findCliente(code);
 
   if(!cliente){
-    const lista = CLIENTES.map(c => normCode(c.code)).join(" | ");
-    document.getElementById("msg").textContent =
-      "Código inválido.\n" +
-      "Você digitou (normalizado): " + code + "\n" +
-      "Códigos carregados nesta página: " + lista;
+    document.getElementById("msg").textContent = "Código inválido.";
     return;
   }
 
   if(!clienteAtivo(cliente)){
-    document.getElementById("msg").textContent =
-      "Assinatura expirada. Fale com o suporte para renovar.";
+    document.getElementById("msg").textContent = "Assinatura expirada.";
     return;
   }
 
-  document.getElementById("msg").textContent = "";
+  // libera e vai pro hub
   localStorage.setItem("falange_ok", "1");
   localStorage.setItem("falange_activatedAt", cliente.activatedAt);
   localStorage.setItem("falange_days", cliente.days);
-  window.location.href = "hub.html";
+
+  // ✅ redireciona SEM depender de caminho relativo bugado
+  window.location.assign("./hub.html");
 }
 
 
-
-  // liberou: entra no hub
-  document.getElementById("msg").textContent = "";
-  localStorage.setItem("falange_ok", "1");
-  localStorage.setItem("falange_activatedAt", cliente.activatedAt);
-  localStorage.setItem("falange_days", cliente.days);
-  window.location.href = "hub.html";
-}
 
 function verificarAssinatura(){
   const dataStr = localStorage.getItem("falange_activatedAt");
