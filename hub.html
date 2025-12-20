@@ -97,42 +97,33 @@ body{
   text-shadow:0 0 14px rgba(147,197,253,.85);
 }
 
-  </style>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <title>Profissional Premium — Painel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+</style>
+</style>
 
-  <link rel="stylesheet" href="style.css">
+<script>
+  (function protegerHub(){
+    const ok = localStorage.getItem("falange_ok") === "1";
+    const dataStr = localStorage.getItem("falange_activatedAt");
+    const dias = Number(localStorage.getItem("falange_days") || 0);
 
-  <!-- 🔐 PROTEÇÃO DO HUB (cole AQUI) -->
-  <script>
-    (function protegerHub(){
-      const ok = localStorage.getItem("falange_ok") === "1";
-      const dataStr = localStorage.getItem("falange_activatedAt");
-      const dias = Number(localStorage.getItem("falange_days") || 0);
+    if(!ok || !dataStr || !dias){
+      window.location.replace("index.html");
+      return;
+    }
 
-      if(!ok || !dataStr || !dias){
-        window.location.replace("index.html");
-        return;
-      }
+    const inicio = new Date(dataStr + "T00:00:00");
+    const fim = new Date(inicio.getTime() + dias * 24 * 60 * 60 * 1000);
 
-      const inicio = new Date(dataStr + "T00:00:00");
-      const fim = new Date(inicio.getTime() + dias * 24 * 60 * 60 * 1000);
-
-      if(new Date() >= fim){
-        localStorage.removeItem("falange_ok");
-        window.location.replace("index.html");
-      }
-    })();
-  </script>
-  <!-- 🔐 FIM DA PROTEÇÃO -->
-
+    if(new Date() >= fim){
+      localStorage.removeItem("falange_ok");
+      window.location.replace("index.html");
+    }
+  })();
+</script>
 
 </head>
 <body>
+
 
   <div class="panel">
 <div style="text-align:center; margin-bottom:16px;">
